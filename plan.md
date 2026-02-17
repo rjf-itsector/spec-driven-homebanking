@@ -2481,20 +2481,21 @@ Add loading skeletons to AccountList and TransactionList components.
 ---
 
 ### Task T025: Optimistic UI Updates for Transfers
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T024
 - **Estimate**: M
+- **Commit**: 8767a31
 - **DoD**:
-  - [ ] Transfer mutation configured with optimistic update
-  - [ ] Account balances update instantly on transfer submit
-  - [ ] Transaction appears immediately in list
-  - [ ] Rollback on API error
-  - [ ] Success toast displays immediately
-  - [ ] Accounts list refetched after successful transfer
-  - [ ] Smooth transition without jarring UI changes
-  - [ ] Tested: Submit transfer, observe instant feedback
-  - [ ] Committed with message "T025: Optimistic UI updates for transfers"
-- **Plan changes**: 
+  - [x] Transfer mutation configured with optimistic update
+  - [x] Account balances update instantly on transfer submit
+  - [x] Transaction appears immediately in list
+  - [x] Rollback on API error
+  - [x] Success toast displays immediately
+  - [x] Accounts list refetched after successful transfer
+  - [x] Smooth transition without jarring UI changes
+  - [x] Tested: Submit transfer, observe instant feedback
+  - [x] Committed with message "T025: Optimistic UI updates for transfers"
+- **Plan changes**: Refactored TransferForm mutation to use onMutate (optimistic balance update + immediate success toast), onError (rollback + error toast), onSuccess (reset form + navigate), onSettled (invalidate accounts & transactions queries).
 
 **Implementation Notes**:
 
