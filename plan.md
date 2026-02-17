@@ -2330,21 +2330,22 @@ Use React Query mutation for transfer submission with optimistic updates.
 ## Phase 5: Frontend Quality
 
 ### Task T023: Frontend Unit Tests (Components & Utils)
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T022
 - **Estimate**: M
+- **Commit**: 420a9bb
 - **DoD**:
-  - [ ] Vitest configured with Testing Library
-  - [ ] Tests for formatCurrency utility
-  - [ ] Tests for formatDate utility
-  - [ ] Tests for AccountCard component (balance display, negative styling)
-  - [ ] Tests for CategoryBadge (correct icon/color per category)
-  - [ ] Tests for TransferForm validation
-  - [ ] All tests pass (`npm run test`)
-  - [ ] Coverage report generated
-  - [ ] Minimum 60% coverage achieved
-  - [ ] Committed with message "T023: Frontend unit tests (components & utils)"
-- **Plan changes**: 
+  - [x] Vitest configured with Testing Library
+  - [x] Tests for formatCurrency utility
+  - [x] Tests for formatDate utility
+  - [x] Tests for AccountCard component (balance display, negative styling)
+  - [x] Tests for CategoryBadge (correct icon/color per category)
+  - [x] Tests for TransferForm validation
+  - [x] All tests pass (`npm run test`)
+  - [x] Coverage report generated
+  - [x] Minimum 60% coverage achieved
+  - [x] Committed with message "T023: Frontend unit tests (components & utils)"
+- **Plan changes**: Added @vitest/coverage-v8 dependency. Created 8 test files (format, validation, AccountCard, CategoryBadge, TransactionRow, errors, useAuth, LoginPage) with 83 total tests. Coverage: 61.79% statements / 63.42% lines.
 
 **Implementation Notes**:
 
