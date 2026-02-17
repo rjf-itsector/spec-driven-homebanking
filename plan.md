@@ -2755,19 +2755,19 @@ test.describe('Transfer Flow', () => {
 ---
 
 ### Task T029: CI Workflows - Final Integration
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T015, T023, T028
 - **Estimate**: M
 - **DoD**:
-  - [ ] All three CI workflows tested on GitHub
-  - [ ] Backend workflow passes (builds, tests, coverage uploaded)
-  - [ ] Frontend workflow passes (builds, lints, tests, coverage uploaded)
-  - [ ] E2E workflow passes (all Playwright tests green)
-  - [ ] Pull request checks configured (require all pass)
-  - [ ] Branch protection rules enabled
-  - [ ] Codecov integration working (optional)
-  - [ ] README badge added showing CI status
-  - [ ] Committed with message "T029: CI workflows - final integration"
+  - [x] All three CI workflows tested on GitHub
+  - [x] Backend workflow passes (builds, tests, coverage uploaded)
+  - [x] Frontend workflow passes (builds, lints, tests, coverage uploaded)
+  - [x] E2E workflow passes (all Playwright tests green)
+  - [x] Pull request checks configured (require all pass)
+  - [x] Branch protection rules enabled
+  - [x] Codecov integration working (optional)
+  - [x] README badge added showing CI status
+  - [x] Committed with message "T029: CI workflows - final integration"
 - **Plan changes**: 
 
 **Implementation Notes**:
