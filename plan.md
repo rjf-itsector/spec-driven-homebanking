@@ -1,8 +1,143 @@
 # Home Banking Application - Implementation Plan
 
-**Version**: 1.0.0  
+**Version**: 1.1.0  
 **Date**: February 17, 2026  
 **Project**: Spec-Driven Home Banking Demo
+
+---
+
+## Global Definition of Done (DoD)
+
+> **Every task MUST satisfy ALL criteria below before it can be marked completed.**  
+> This DoD is the universal quality gate — no exceptions, no shortcuts.
+
+### 1. Build & Lint: Zero Tolerance
+
+| Check | Local Command | CI Step |
+|-------|--------------|---------|
+| Backend build (no warnings) | `dotnet build --configuration Release --warnaserror` | Same |
+| Backend lint / format | `dotnet format --verify-no-changes` | Same |
+| Frontend build (no warnings) | `cd frontend && npm run build` | Same |
+| Frontend lint (zero errors) | `cd frontend && npm run lint` | Same |
+| Frontend type check | `cd frontend && npx tsc --noEmit` | Same |
+
+- **Zero lint errors** from both `dotnet format` and `eslint`.
+- **Zero build warnings** — `--warnaserror` is enforced on .NET; the Vite build must produce no warnings.
+
+### 2. Testing: Complete & Green
+
+| Check | Local Command | CI Step |
+|-------|--------------|---------|
+| Backend unit/integration tests | `dotnet test --configuration Release --no-build --verbosity normal` | Same |
+| Frontend unit tests | `cd frontend && npm run test:coverage` | Same |
+| E2E tests (when applicable) | `cd e2e && npx playwright test` | Same |
+
+- **New functionality MUST have new tests** — unit tests at minimum; integration/E2E where appropriate.
+- **ALL tests pass** — both new and existing. A single failure blocks completion.
+- Test coverage must not decrease. New code should aim for ≥80% line coverage.
+
+### 3. Documentation & Comments
+
+- XML doc comments on all public C# types and members.
+- JSDoc/TSDoc on exported TypeScript functions and components.
+- Update relevant docs (README, API docs, architecture docs) when behaviour changes.
+- Inline comments for non-obvious logic only (prefer self-documenting code).
+
+### 4. Plan Maintenance
+
+After **every** task completion:
+
+1. **Update task status** in this plan (`pending` → `done`; checkboxes ticked).
+2. **Fill the "Plan changes" field** on the completed task — even if "none".
+3. **Review ALL upcoming tasks** and evaluate whether the completed work caused changes (new dependencies, scope adjustments, obsoleted tasks, new tasks).
+4. **Document every plan change** in detail:
+   - Which task triggered the change.
+   - What changed and why.
+   - Any new tasks added or existing tasks modified.
+5. **Commit** with message format: `T<NNN>: <short description>`.
+
+### 5. Local ↔ CI Parity (Critical)
+
+> **The local validation gate and the CI pipeline MUST be identical.**  
+> Same commands. Same flags. Same thresholds. If it passes locally it passes on CI, and vice versa.
+
+All validation commands are centralized in a single gate script (`scripts/validate.sh`) that is invoked both:
+- **Locally** by the developer/AI agent before marking a task done.
+- **In CI** by every GitHub Actions workflow.
+
+```bash
+#!/usr/bin/env bash
+# scripts/validate.sh — Single source of truth for quality gates
+set -euo pipefail
+
+echo "=== Backend: Restore ==="
+dotnet restore backend/
+
+echo "=== Backend: Build (warnings-as-errors) ==="
+dotnet build backend/ --configuration Release --warnaserror --no-restore
+
+echo "=== Backend: Format Check ==="
+dotnet format backend/ --verify-no-changes
+
+echo "=== Backend: Tests ==="
+dotnet test backend/ --configuration Release --no-build --verbosity normal
+
+echo "=== Frontend: Install ==="
+(cd frontend && npm ci)
+
+echo "=== Frontend: Lint ==="
+(cd frontend && npm run lint)
+
+echo "=== Frontend: Type Check ==="
+(cd frontend && npx tsc --noEmit)
+
+echo "=== Frontend: Tests ==="
+(cd frontend && npm run test:coverage)
+
+echo "=== Frontend: Build ==="
+(cd frontend && npm run build)
+
+echo "✅ All gates passed."
+```
+
+CI workflows call this same script — they do NOT duplicate commands inline. This eliminates local/CI drift.
+
+### 6. CI Must Be Green
+
+- A task is **NOT done** until the pushed commit has **all GitHub Actions workflows passing green**.
+- If CI fails on push, the task reopens — fix, re-validate locally, push again.
+- The DoD checklist on each task implicitly includes "CI green" even if not listed per-task.
+
+### 7. AI-Assisted Development Guardrails
+
+These additional practices apply when tasks are executed by AI agents:
+
+- **Spec fidelity**: Generated code must conform to `spec.md`. Any deviation must be flagged and approved.
+- **Deterministic validation**: AI agents run `scripts/validate.sh` (the same gate script) before declaring a task done. No self-assessment — only automated tooling counts.
+- **Incremental commits**: Each task = one atomic commit. No multi-task mega-commits.
+- **Diff review**: After code generation, the agent must review its own diff for unintended changes (e.g., deleted code, leftover debug statements, hallucinated imports).
+- **Regression vigilance**: If a previously-passing test breaks, the root cause must be identified and fixed before proceeding — never delete or skip a test to make CI green.
+- **Context window discipline**: Large tasks should be broken into sub-steps. If a task's scope exceeds what can be reliably tracked in a single context, split it.
+
+### DoD Checklist (copy into each task)
+
+```markdown
+- [ ] Code compiles with zero warnings (`--warnaserror`)
+- [ ] Zero lint errors (dotnet format + eslint)
+- [ ] New tests written for new functionality
+- [ ] All tests pass (new + existing)
+- [ ] Documentation/comments updated where relevant
+- [ ] `scripts/validate.sh` passes locally
+- [ ] Changes committed with `T<NNN>: <description>` message
+- [ ] Pushed to remote; CI workflows green
+- [ ] plan.md updated (task status, plan changes, upcoming task review)
+```
+
+### Plan Change Log
+
+| Date | Source Task | Change Description |
+|------|-----------|-------------------|
+| 2026-02-17 | — | Added Global Definition of Done section (v1.1.0) |
 
 ---
 
