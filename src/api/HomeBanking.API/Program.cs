@@ -1,5 +1,10 @@
+using System.Text;
+using HomeBanking.Core.Interfaces;
 using HomeBanking.Infrastructure.Data;
+using HomeBanking.Infrastructure.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +12,24 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<HomeBankingDbContext>(options =>
     options.UseInMemoryDatabase("HomeBanking"));
+
+// JWT Authentication
+builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.ASCII.GetBytes(builder.Configuration["Jwt:SecretKey"]!)),
+            ValidateIssuer = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidateAudience = false,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 
@@ -23,9 +46,18 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-// Health check endpoint
+app.UseAuthentication();
+app.UseAuthorization();
+
+// Health check endpoint (public)
 app.MapGet("/health", () => Results.Ok(new { status = "healthy" }))
     .WithName("HealthCheck")
     .WithTags("Health");
+
+// Test protected endpoint
+app.MapGet("/api/v1/protected", () => Results.Ok(new { message = "You are authorized!" }))
+    .RequireAuthorization()
+    .WithName("Protected")
+    .WithTags("Auth");
 
 app.Run();
