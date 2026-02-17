@@ -1,6 +1,7 @@
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react'
 
 import type { TransactionDto } from '@/lib/api/types'
+import { CategoryBadge } from '@/components/features/transactions/CategoryBadge'
 import { formatCurrency, formatDate } from '@/lib/utils/format'
 import { cn } from '@/lib/utils'
 
@@ -33,8 +34,10 @@ export function TransactionRow({
         <p className="text-sm font-medium truncate">
           {transaction.description}
         </p>
-        <p className="text-xs text-muted-foreground">
-          {transaction.category} &middot; {formatDate(transaction.timestamp)}
+        <p className="text-xs text-muted-foreground flex items-center gap-1">
+          <CategoryBadge category={transaction.category} />
+          {'·'}
+          {formatDate(transaction.timestamp)}
         </p>
       </div>
 
