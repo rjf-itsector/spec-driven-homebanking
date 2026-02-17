@@ -1986,19 +1986,19 @@ Create `frontend/src/components/features/auth/ProtectedRoute.tsx` that redirects
 ---
 
 ### Task T018: Dashboard Layout & Routing
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T017
 - **Estimate**: M
 - **DoD**:
-  - [ ] React Router configured with routes
-  - [ ] DashboardLayout component created (header, nav, main content)
-  - [ ] Header shows user name and logout button
-  - [ ] Navigation links (Dashboard, Transfer)
-  - [ ] Dark theme applied from shadcn/ui
-  - [ ] Responsive layout (mobile-first)
-  - [ ] Protected routes wrap dashboard pages
-  - [ ] Routing tested (navigation works)
-  - [ ] Committed with message "T018: Dashboard layout & routing"
+  - [x] React Router configured with routes
+  - [x] DashboardLayout component created (header, nav, main content)
+  - [x] Header shows user name and logout button
+  - [x] Navigation links (Dashboard, Transfer)
+  - [x] Dark theme applied from shadcn/ui
+  - [x] Responsive layout (mobile-first)
+  - [x] Protected routes wrap dashboard pages
+  - [x] Routing tested (navigation works)
+  - [x] Committed with message "T018: Dashboard layout & routing"
 - **Plan changes**: 
 
 **Implementation Notes**:
