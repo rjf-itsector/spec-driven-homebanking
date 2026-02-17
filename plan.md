@@ -142,6 +142,7 @@ These additional practices apply when tasks are executed by AI agents:
 | 2026-02-17 | T001 | Adapted monorepo to existing src/api + src/web structure (instead of backend/ + frontend/). Created HomeBanking.sln at src/api/ so `dotnet build src/api` works. All subsequent tasks will use src/api and src/web paths. Added placeholder test script to src/web/package.json. |
 | 2026-02-17 | T002 | Added inter-project references. Contracts kept dependency-free (no Core ref). Cleaned up WeatherForecast template, added /health endpoint. |
 | 2026-02-17 | T003 | Configured Tailwind v4, shadcn/ui, Vitest, Prettier. All frontend tooling in place. |
+| 2026-02-17 | T004 | E2E Playwright project initialized in e2e/ with correct paths to src/api and src/web. |
 
 ---
 
@@ -389,18 +390,18 @@ mkdir -p src/pages tests/unit
 ---
 
 ### Task T004: E2E Playwright Project Setup
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T001
 - **Estimate**: S
 - **DoD**:
-  - [ ] Playwright installed and initialized
-  - [ ] playwright.config.ts configured for Chromium, Firefox, WebKit
-  - [ ] Test folder structure created (tests/, fixtures/)
-  - [ ] Base URL configured (http://localhost:5173)
-  - [ ] Example test runs successfully
-  - [ ] @axe-core/playwright installed for accessibility testing
-  - [ ] Committed with message "T004: E2E Playwright project setup"
-- **Plan changes**: 
+  - [x] Playwright installed and initialized
+  - [x] playwright.config.ts configured for Chromium, Firefox, WebKit
+  - [x] Test folder structure created (tests/, fixtures/)
+  - [x] Base URL configured (http://localhost:5173)
+  - [x] Example test runs successfully
+  - [x] @axe-core/playwright installed for accessibility testing
+  - [x] Committed with message "T004: E2E Playwright project setup"
+- **Plan changes**: WebServer config adapted to use src/api and src/web paths (not backend/frontend from original notes). Added tsconfig.json for type-checking e2e code. Added @types/node for process.env types.
 
 **Implementation Notes**:
 ```bash
