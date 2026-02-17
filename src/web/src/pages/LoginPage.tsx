@@ -81,6 +81,7 @@ export function LoginPage() {
                 id="email"
                 type="email"
                 placeholder="you@example.com"
+                data-testid="email"
                 {...register('email')}
               />
               {formErrors.email && (
@@ -95,6 +96,7 @@ export function LoginPage() {
                 id="password"
                 type="password"
                 placeholder="••••••••"
+                data-testid="password"
                 {...register('password')}
               />
               {formErrors.password && (
@@ -103,7 +105,12 @@ export function LoginPage() {
                 </p>
               )}
             </div>
-            <Button type="submit" className="w-full" disabled={isSubmitting}>
+            <Button
+              type="submit"
+              className="w-full"
+              disabled={isSubmitting}
+              data-testid="login-button"
+            >
               {isSubmitting ? 'Signing in...' : 'Sign in'}
             </Button>
           </form>

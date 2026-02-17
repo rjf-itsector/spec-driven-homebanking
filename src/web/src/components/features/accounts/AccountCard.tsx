@@ -31,7 +31,10 @@ export function AccountCard({ account }: AccountCardProps) {
 
   return (
     <Link to={`/accounts/${account.id}`} className="block">
-      <Card className="transition-colors hover:bg-accent/50 cursor-pointer">
+      <Card
+        className="transition-colors hover:bg-accent/50 cursor-pointer"
+        data-testid="account-card"
+      >
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">{config.label}</CardTitle>
           <Icon className="h-4 w-4 text-muted-foreground" />

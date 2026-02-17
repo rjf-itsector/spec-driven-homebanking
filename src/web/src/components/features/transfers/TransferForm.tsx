@@ -154,7 +154,7 @@ export function TransferForm() {
   const activeAccounts = accounts.filter((a) => a.isActive)
 
   return (
-    <Card className="mx-auto max-w-lg">
+    <Card className="mx-auto max-w-lg" data-testid="transfer-form">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <ArrowRightLeft className="h-5 w-5" />
@@ -185,7 +185,7 @@ export function TransferForm() {
                   onValueChange={field.onChange}
                   disabled={accountsLoading}
                 >
-                  <SelectTrigger id="fromAccountId">
+                  <SelectTrigger id="fromAccountId" data-testid="from-account">
                     <SelectValue placeholder="Select source account" />
                   </SelectTrigger>
                   <SelectContent>
@@ -217,7 +217,7 @@ export function TransferForm() {
                   onValueChange={field.onChange}
                   disabled={accountsLoading}
                 >
-                  <SelectTrigger id="toAccountId">
+                  <SelectTrigger id="toAccountId" data-testid="to-account">
                     <SelectValue placeholder="Select destination account" />
                   </SelectTrigger>
                   <SelectContent>
@@ -246,6 +246,7 @@ export function TransferForm() {
               step="0.01"
               min="0.01"
               placeholder="0.00"
+              data-testid="amount"
               {...register('amount', { valueAsNumber: true })}
             />
             {errors.amount && (
@@ -274,6 +275,7 @@ export function TransferForm() {
               placeholder="e.g. Rent payment"
               maxLength={200}
               rows={3}
+              data-testid="description"
               {...register('description')}
             />
             {errors.description && (
@@ -288,6 +290,7 @@ export function TransferForm() {
             type="submit"
             className="w-full"
             disabled={mutation.isPending}
+            data-testid="transfer-submit"
           >
             {mutation.isPending ? (
               <>

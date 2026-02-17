@@ -85,6 +85,7 @@ export function CategoryBadge({ category, className }: CategoryBadgeProps) {
     <Badge
       variant="outline"
       aria-label={config.label}
+      data-testid="category-badge"
       className={cn(
         'gap-1 px-1.5 py-0 text-[10px] font-medium leading-5',
         config.className,

@@ -18,7 +18,10 @@ export function TransactionRow({
   const Icon = isCredit ? ArrowDownLeft : ArrowUpRight
 
   return (
-    <div className="flex items-center gap-3 px-4 py-3 hover:bg-accent/50 transition-colors">
+    <div
+      className="flex items-center gap-3 px-4 py-3 hover:bg-accent/50 transition-colors"
+      data-testid="transaction-row"
+    >
       <div
         className={cn(
           'flex h-9 w-9 shrink-0 items-center justify-center rounded-full',
