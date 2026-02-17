@@ -1064,19 +1064,19 @@ public class AuthController : ControllerBase
 ---
 
 ### Task T010: Account Endpoints
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T009
 - **Estimate**: M
 - **DoD**:
-  - [ ] AccountsController created
-  - [ ] GET /api/v1/accounts endpoint returns user's accounts
-  - [ ] GET /api/v1/accounts/{id} endpoint returns account details
-  - [ ] Endpoints require [Authorize] attribute
-  - [ ] DTOs created (AccountDto, AccountDetailDto)
-  - [ ] Returns 403 if user tries to access another user's account
-  - [ ] Returns 404 for non-existent account
-  - [ ] Manually tested with JWT token
-  - [ ] Committed with message "T010: Account endpoints"
+  - [x] AccountsController created
+  - [x] GET /api/v1/accounts endpoint returns user's accounts
+  - [x] GET /api/v1/accounts/{id} endpoint returns account details
+  - [x] Endpoints require [Authorize] attribute
+  - [x] DTOs created (AccountDto, AccountDetailDto)
+  - [x] Returns 403 if user tries to access another user's account
+  - [x] Returns 404 for non-existent account
+  - [x] Manually tested with JWT token
+  - [x] Committed with message "T010: Account endpoints"
 - **Plan changes**: 
 
 **Implementation Notes**:
