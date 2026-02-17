@@ -1314,21 +1314,21 @@ public class TransactionsController : ControllerBase
 ---
 
 ### Task T012: Transfer Endpoint (Create Transfer)
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T011
 - **Estimate**: L
 - **DoD**:
-  - [ ] POST /api/v1/transfers endpoint created
-  - [ ] TransferRequest DTO with validation (amount > 0, accounts differ)
-  - [ ] Business logic: check sufficient balance, create 2 transactions atomically
-  - [ ] Update both account balances
-  - [ ] Link transactions via RelatedTransactionId
-  - [ ] Generate unique reference numbers
-  - [ ] Returns 201 with TransferResponse
-  - [ ] Returns 400 for validation errors (insufficient funds, same account, etc.)
-  - [ ] Transaction rolled back on error
-  - [ ] Manually tested with successful and failing transfers
-  - [ ] Committed with message "T012: Transfer endpoint (create transfer)"
+  - [x] POST /api/v1/transfers endpoint created
+  - [x] TransferRequest DTO with validation (amount > 0, accounts differ)
+  - [x] Business logic: check sufficient balance, create 2 transactions atomically
+  - [x] Update both account balances
+  - [x] Link transactions via RelatedTransactionId
+  - [x] Generate unique reference numbers
+  - [x] Returns 201 with TransferResponse
+  - [x] Returns 400 for validation errors (insufficient funds, same account, etc.)
+  - [x] Transaction rolled back on error
+  - [x] Manually tested with successful and failing transfers
+  - [x] Committed with message "T012: Transfer endpoint (create transfer)"
 - **Plan changes**: 
 
 **Implementation Notes**:
