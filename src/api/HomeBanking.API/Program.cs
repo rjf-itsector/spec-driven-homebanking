@@ -1,4 +1,5 @@
 using System.Text;
+using FluentValidation;
 using HomeBanking.Core.Interfaces;
 using HomeBanking.Infrastructure.Data;
 using HomeBanking.Infrastructure.Services;
@@ -9,6 +10,8 @@ using Microsoft.IdentityModel.Tokens;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddControllers();
+builder.Services.AddValidatorsFromAssemblyContaining<Program>();
 builder.Services.AddOpenApi();
 builder.Services.AddDbContext<HomeBankingDbContext>(options =>
     options.UseInMemoryDatabase("HomeBanking"));
@@ -48,6 +51,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseAuthentication();
 app.UseAuthorization();
+app.MapControllers();
 
 // Health check endpoint (public)
 app.MapGet("/health", () => Results.Ok(new { status = "healthy" }))
