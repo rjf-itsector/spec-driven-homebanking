@@ -53,7 +53,7 @@ describe('App', () => {
     )
     renderApp('/dashboard')
     expect(
-      screen.getByText('Your accounts will appear here.'),
+      screen.getByText('Overview of your accounts and balances.'),
     ).toBeInTheDocument()
     expect(screen.getAllByText('John Doe').length).toBeGreaterThan(0)
     expect(

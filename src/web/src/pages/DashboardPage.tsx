@@ -1,10 +1,15 @@
+import { AccountList } from '@/components/features/accounts/AccountList'
+
 export function DashboardPage() {
   return (
-    <div>
-      <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
-      <p className="text-muted-foreground mt-2">
-        Your accounts will appear here.
-      </p>
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-bold tracking-tight">Dashboard</h1>
+        <p className="text-muted-foreground mt-2">
+          Overview of your accounts and balances.
+        </p>
+      </div>
+      <AccountList />
     </div>
   )
 }
