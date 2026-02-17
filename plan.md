@@ -2126,21 +2126,21 @@ Use React Query in AccountList for data fetching with loading/error states.
 ---
 
 ### Task T020: Transaction List with Infinite Scroll
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T019
 - **Estimate**: L
 - **DoD**:
-  - [ ] TransactionList component created
-  - [ ] useInfiniteQuery hook configured for cursor pagination
-  - [ ] TransactionRow component displays transaction details
-  - [ ] Intersection Observer detects scroll to bottom
-  - [ ] Automatically loads next batch when scrolling
-  - [ ] Loading indicator shown while fetching more
-  - [ ] "No more transactions" message at list end
-  - [ ] Empty state for no transactions
-  - [ ] Mobile-responsive list layout
-  - [ ] Tested with scrolling through 50+ transactions
-  - [ ] Committed with message "T020: Transaction list with infinite scroll"
+  - [x] TransactionList component created
+  - [x] useInfiniteQuery hook configured for cursor pagination
+  - [x] TransactionRow component displays transaction details
+  - [x] Intersection Observer detects scroll to bottom
+  - [x] Automatically loads next batch when scrolling
+  - [x] Loading indicator shown while fetching more
+  - [x] "No more transactions" message at list end
+  - [x] Empty state for no transactions
+  - [x] Mobile-responsive list layout
+  - [x] Tested with scrolling through 50+ transactions
+  - [x] Committed with message "T020: Transaction list with infinite scroll"
 - **Plan changes**: 
 
 **Implementation Notes**:
