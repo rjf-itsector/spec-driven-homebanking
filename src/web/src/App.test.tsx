@@ -76,6 +76,8 @@ describe('App', () => {
     expect(
       screen.getByRole('heading', { name: 'Transfer' }),
     ).toBeInTheDocument()
-    expect(screen.getByText('Transfer form coming soon.')).toBeInTheDocument()
+    expect(
+      screen.getByText('Move funds between your accounts.'),
+    ).toBeInTheDocument()
   })
 })

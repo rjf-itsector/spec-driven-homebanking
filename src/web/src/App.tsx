@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { AuthProvider } from '@/lib/hooks/useAuth'
 import { ProtectedRoute } from '@/components/features/auth/ProtectedRoute'
 import { DashboardLayout } from '@/components/layouts/DashboardLayout'
+import { Toaster } from '@/components/ui/sonner'
 import { LoginPage } from '@/pages/LoginPage'
 import { DashboardPage } from '@/pages/DashboardPage'
 import { TransferPage } from '@/pages/TransferPage'
@@ -28,6 +29,7 @@ function App() {
           </Route>
           <Route path="*" element={<Navigate to="/dashboard" replace />} />
         </Routes>
+        <Toaster />
       </AuthProvider>
     </QueryClientProvider>
   )
