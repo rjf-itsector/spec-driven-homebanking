@@ -1571,19 +1571,19 @@ Add XML comments to all controllers.
 ---
 
 ### Task T014: Backend Unit Tests (Domain Logic)
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T012
 - **Estimate**: M
 - **DoD**:
-  - [ ] Test project dependencies added (xUnit, FluentAssertions, Moq)
-  - [ ] Unit tests for Transfer validation rules
-  - [ ] Unit tests for balance calculations
-  - [ ] Unit tests for JWT token generation/validation
-  - [ ] Unit tests for transaction categorization (if applicable)
-  - [ ] All tests pass (`dotnet test`)
-  - [ ] Code coverage report generated
-  - [ ] Minimum 70% coverage achieved
-  - [ ] Committed with message "T014: Backend unit tests (domain logic)"
+  - [x] Test project dependencies added (xUnit, FluentAssertions, Moq)
+  - [x] Unit tests for Transfer validation rules
+  - [x] Unit tests for balance calculations
+  - [x] Unit tests for JWT token generation/validation
+  - [x] Unit tests for transaction categorization (if applicable)
+  - [x] All tests pass (`dotnet test`)
+  - [x] Code coverage report generated
+  - [x] Minimum 70% coverage achieved
+  - [x] Committed with message "T014: Backend unit tests (domain logic)"
 - **Plan changes**: 
 
 **Implementation Notes**:
