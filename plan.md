@@ -2680,17 +2680,17 @@ test.describe('Transaction List', () => {
 - **Dependencies**: T022, T026
 - **Estimate**: M
 - **DoD**:
-  - [ ] Playwright test file created: transfer.spec.ts
-  - [ ] Test: Login, navigate to transfer page
-  - [ ] Test: Fill form with valid data
-  - [ ] Test: Submit transfer
-  - [ ] Test: Verify success message
-  - [ ] Test: Verify account balances updated
-  - [ ] Test: Verify transaction appears in list
-  - [ ] Test: Form validation errors display
-  - [ ] Test: Cannot transfer to same account
-  - [ ] All tests pass
-  - [ ] Committed with message "T028: E2E test - complete transfer flow"
+  - [x] Playwright test file created: transfer.spec.ts
+  - [x] Test: Login, navigate to transfer page
+  - [x] Test: Fill form with valid data
+  - [x] Test: Submit transfer
+  - [x] Test: Verify success message
+  - [x] Test: Verify account balances updated
+  - [x] Test: Verify transaction appears in list
+  - [x] Test: Form validation errors display
+  - [x] Test: Cannot transfer to same account
+  - [x] All tests pass
+  - [x] Committed with message "T028: E2E test - complete transfer flow"
 - **Plan changes**: 
 
 **Implementation Notes**:
