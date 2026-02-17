@@ -1163,19 +1163,19 @@ public class AccountsController : ControllerBase
 ---
 
 ### Task T011: Transaction Endpoints (Cursor Pagination)
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T010
 - **Estimate**: L
 - **DoD**:
-  - [ ] POST /api/v1/accounts/{accountId}/transactions with cursor pagination
-  - [ ] Query params: cursor (optional), limit (default 20, max 100)
-  - [ ] Returns transactions in reverse chronological order
-  - [ ] Response includes pagination metadata (hasMore, nextCursor)
-  - [ ] GET /api/v1/transactions/{id} returns single transaction
-  - [ ] Authorization checks (user owns account)
-  - [ ] TransactionDto created with all required fields
-  - [ ] Manually tested with multiple pages
-  - [ ] Committed with message "T011: Transaction endpoints (cursor pagination)"
+  - [x] POST /api/v1/accounts/{accountId}/transactions with cursor pagination
+  - [x] Query params: cursor (optional), limit (default 20, max 100)
+  - [x] Returns transactions in reverse chronological order
+  - [x] Response includes pagination metadata (hasMore, nextCursor)
+  - [x] GET /api/v1/transactions/{id} returns single transaction
+  - [x] Authorization checks (user owns account)
+  - [x] TransactionDto created with all required fields
+  - [x] Manually tested with multiple pages
+  - [x] Committed with message "T011: Transaction endpoints (cursor pagination)"
 - **Plan changes**: 
 
 **Implementation Notes**:
