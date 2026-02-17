@@ -143,6 +143,7 @@ These additional practices apply when tasks are executed by AI agents:
 | 2026-02-17 | T002 | Added inter-project references. Contracts kept dependency-free (no Core ref). Cleaned up WeatherForecast template, added /health endpoint. |
 | 2026-02-17 | T003 | Configured Tailwind v4, shadcn/ui, Vitest, Prettier. All frontend tooling in place. |
 | 2026-02-17 | T004 | E2E Playwright project initialized in e2e/ with correct paths to src/api and src/web. |
+| 2026-02-17 | T005 | Created .github/workflows/{backend,frontend,e2e}.yml. Corrected paths to src/api and src/web. All workflows trigger on push+PR with path filters. E2E uploads Playwright report on failure. |
 
 ---
 
@@ -460,18 +461,18 @@ export default defineConfig({
 ---
 
 ### Task T005: GitHub Actions CI Workflow Scaffolding
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T002, T003, T004
 - **Estimate**: M
 - **DoD**:
-  - [ ] Three workflow files created: backend.yml, frontend.yml, e2e.yml
-  - [ ] Backend workflow builds and tests .NET solution
-  - [ ] Frontend workflow builds, lints, type-checks, and tests
-  - [ ] E2E workflow runs Playwright tests
-  - [ ] All workflows trigger on push and pull_request
-  - [ ] Workflows run successfully (create empty tests if needed)
-  - [ ] Committed with message "T005: GitHub Actions CI workflow scaffolding"
-- **Plan changes**: 
+  - [x] Three workflow files created: backend.yml, frontend.yml, e2e.yml
+  - [x] Backend workflow builds and tests .NET solution
+  - [x] Frontend workflow builds, lints, type-checks, and tests
+  - [x] E2E workflow runs Playwright tests
+  - [x] All workflows trigger on push and pull_request
+  - [x] Workflows run successfully (create empty tests if needed)
+  - [x] Committed with message "T005: GitHub Actions CI workflow scaffolding"
+- **Plan changes**: Corrected paths from backend/frontend to src/api/src/web. Removed branch filter to support feature branches. Added path filter for own workflow file. E2E uploads Playwright report artifact on failure.
 
 **Implementation Notes**:
 
