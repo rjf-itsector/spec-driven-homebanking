@@ -144,6 +144,7 @@ These additional practices apply when tasks are executed by AI agents:
 | 2026-02-17 | T003 | Configured Tailwind v4, shadcn/ui, Vitest, Prettier. All frontend tooling in place. |
 | 2026-02-17 | T004 | E2E Playwright project initialized in e2e/ with correct paths to src/api and src/web. |
 | 2026-02-17 | T005 | Created .github/workflows/{backend,frontend,e2e}.yml. Corrected paths to src/api and src/web. All workflows trigger on push+PR with path filters. E2E uploads Playwright report on failure. |
+| 2026-02-17 | T006 | Created User, Account, Transaction entities with enums (AccountType, TransactionType, TransactionCategory) in HomeBanking.Core/Entities. Full XML docs. |
 
 ---
 
@@ -642,19 +643,19 @@ jobs:
 ## Phase 2: Backend Core
 
 ### Task T006: Domain Models (Entities & Enums)
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T002
 - **Estimate**: M
 - **DoD**:
-  - [ ] User entity created with properties (Id, Email, PasswordHash, etc.)
-  - [ ] Account entity created with AccountType enum
-  - [ ] Transaction entity created with TransactionType and TransactionCategory enums
-  - [ ] All entities use Guid for IDs, decimal for money amounts
-  - [ ] Navigation properties configured
-  - [ ] XML documentation comments added
-  - [ ] Builds successfully with no warnings
-  - [ ] Committed with message "T006: Domain models (entities & enums)"
-- **Plan changes**: 
+  - [x] User entity created with properties (Id, Email, PasswordHash, etc.)
+  - [x] Account entity created with AccountType enum
+  - [x] Transaction entity created with TransactionType and TransactionCategory enums
+  - [x] All entities use Guid for IDs, decimal for money amounts
+  - [x] Navigation properties configured
+  - [x] XML documentation comments added
+  - [x] Builds successfully with no warnings
+  - [x] Committed with message "T006: Domain models (entities & enums)"
+- **Plan changes**: Entities placed at src/api/HomeBanking.Core/Entities/ (not backend/src/).
 
 **Implementation Notes**:
 
