@@ -14,7 +14,7 @@ export function TransactionRow({
   transaction,
   currency = 'EUR',
 }: TransactionRowProps) {
-  const isCredit = transaction.type === 'Credit'
+  const isCredit = transaction.amount > 0
   const Icon = isCredit ? ArrowDownLeft : ArrowUpRight
 
   return (

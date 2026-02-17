@@ -4,7 +4,9 @@ import { handleApiError } from './errors'
 
 export async function getAccounts(): Promise<AccountDto[]> {
   return handleApiError(
-    apiClient.get<AccountDto[]>('/accounts').then((res) => res.data),
+    apiClient
+      .get<{ accounts: AccountDto[] }>('/accounts')
+      .then((res) => res.data.accounts),
   )
 }
 
