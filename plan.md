@@ -1891,21 +1891,21 @@ Create API service files with typed functions.
 ---
 
 ### Task T017: Auth Context & Login Page
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T016
 - **Estimate**: M
 - **DoD**:
-  - [ ] AuthContext created with login/logout functions
-  - [ ] useAuth hook exported
-  - [ ] LoginPage component created with form
-  - [ ] Email and password inputs with validation
-  - [ ] Login button submits credentials
-  - [ ] Success: Store token, navigate to dashboard
-  - [ ] Error: Display error message
-  - [ ] Loading state during API call
-  - [ ] ProtectedRoute component created
-  - [ ] Tested: Login flow works end-to-end
-  - [ ] Committed with message "T017: Auth context & login page"
+  - [x] AuthContext created with login/logout functions
+  - [x] useAuth hook exported
+  - [x] LoginPage component created with form
+  - [x] Email and password inputs with validation
+  - [x] Login button submits credentials
+  - [x] Success: Store token, navigate to dashboard
+  - [x] Error: Display error message
+  - [x] Loading state during API call
+  - [x] ProtectedRoute component created
+  - [x] Tested: Login flow works end-to-end
+  - [x] Committed with message "T017: Auth context & login page"
 - **Plan changes**: 
 
 **Implementation Notes**:
