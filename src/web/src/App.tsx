@@ -6,6 +6,7 @@ import { DashboardLayout } from '@/components/layouts/DashboardLayout'
 import { LoginPage } from '@/pages/LoginPage'
 import { DashboardPage } from '@/pages/DashboardPage'
 import { TransferPage } from '@/pages/TransferPage'
+import { AccountDetailPage } from '@/pages/AccountDetailPage'
 
 const queryClient = new QueryClient()
 
@@ -19,6 +20,10 @@ function App() {
             <Route element={<DashboardLayout />}>
               <Route path="/dashboard" element={<DashboardPage />} />
               <Route path="/transfer" element={<TransferPage />} />
+              <Route
+                path="/accounts/:accountId"
+                element={<AccountDetailPage />}
+              />
             </Route>
           </Route>
           <Route path="*" element={<Navigate to="/dashboard" replace />} />

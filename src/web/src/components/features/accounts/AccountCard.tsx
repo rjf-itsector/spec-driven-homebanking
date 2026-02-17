@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Building2, CreditCard, PiggyBank, Wallet } from 'lucide-react'
 
 import type { AccountDto } from '@/lib/api/types'
@@ -29,21 +30,26 @@ export function AccountCard({ account }: AccountCardProps) {
   const isNegative = account.balance < 0
 
   return (
-    <Card className="transition-colors hover:bg-accent/50">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">{config.label}</CardTitle>
-        <Icon className="h-4 w-4 text-muted-foreground" />
-      </CardHeader>
-      <CardContent>
-        <div
-          className={cn('text-2xl font-bold', isNegative && 'text-destructive')}
-        >
-          {formatCurrency(account.balance, account.currency)}
-        </div>
-        <p className="text-xs text-muted-foreground mt-1">
-          {maskAccountNumber(account.accountNumber)}
-        </p>
-      </CardContent>
-    </Card>
+    <Link to={`/accounts/${account.id}`} className="block">
+      <Card className="transition-colors hover:bg-accent/50 cursor-pointer">
+        <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+          <CardTitle className="text-sm font-medium">{config.label}</CardTitle>
+          <Icon className="h-4 w-4 text-muted-foreground" />
+        </CardHeader>
+        <CardContent>
+          <div
+            className={cn(
+              'text-2xl font-bold',
+              isNegative && 'text-destructive',
+            )}
+          >
+            {formatCurrency(account.balance, account.currency)}
+          </div>
+          <p className="text-xs text-muted-foreground mt-1">
+            {maskAccountNumber(account.accountNumber)}
+          </p>
+        </CardContent>
+      </Card>
+    </Link>
   )
 }
