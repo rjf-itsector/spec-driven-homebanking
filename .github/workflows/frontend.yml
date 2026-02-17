@@ -34,7 +34,15 @@ jobs:
       run: npx tsc --noEmit -p src/web/tsconfig.app.json
 
     - name: Run tests
-      run: npm run test --prefix src/web
+      run: npx vitest run --coverage --reporter=verbose
+      working-directory: src/web
+
+    - name: Upload coverage
+      uses: actions/upload-artifact@v4
+      with:
+        name: frontend-coverage
+        path: src/web/coverage/
+        retention-days: 7
 
     - name: Build
       run: npm run build --prefix src/web

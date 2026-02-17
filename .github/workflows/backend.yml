@@ -29,4 +29,11 @@ jobs:
       run: dotnet build src/api --no-restore
 
     - name: Run tests
-      run: dotnet test src/api --no-build --verbosity normal
+      run: dotnet test src/api --no-build --verbosity normal --collect:"XPlat Code Coverage"
+
+    - name: Upload coverage
+      uses: actions/upload-artifact@v4
+      with:
+        name: backend-coverage
+        path: src/api/**/coverage.cobertura.xml
+        retention-days: 7

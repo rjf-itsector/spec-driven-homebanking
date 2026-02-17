@@ -1,5 +1,9 @@
 # Home Banking Application
 
+![Backend CI](https://github.com/rjf-itsector/spec-driven-homebanking/actions/workflows/backend.yml/badge.svg)
+![Frontend CI](https://github.com/rjf-itsector/spec-driven-homebanking/actions/workflows/frontend.yml/badge.svg)
+![E2E Tests](https://github.com/rjf-itsector/spec-driven-homebanking/actions/workflows/e2e.yml/badge.svg)
+
 A **demo** home-banking application built with a spec-driven development approach.
 
 ## Tech Stack
@@ -8,7 +12,7 @@ A **demo** home-banking application built with a spec-driven development approac
 |----------|-----------------------------|------------|
 | Backend  | .NET 9 Web API              | `src/api/` |
 | Frontend | React + Vite + TypeScript   | `src/web/` |
-| E2E      | *(coming soon)*             | `e2e/`     |
+| E2E      | Playwright                  | `e2e/`     |
 
 ## Project Structure
 
