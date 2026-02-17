@@ -1512,19 +1512,19 @@ public class TransfersController : ControllerBase
 ## Phase 3: Backend Quality
 
 ### Task T013: Scalar OpenAPI & Health Checks
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T012
 - **Estimate**: M
 - **DoD**:
-  - [ ] Scalar.AspNetCore package installed
-  - [ ] OpenAPI specification generated from controllers
-  - [ ] Scalar UI accessible at /scalar/v1
-  - [ ] Health check endpoints configured (/health, /health/ready)
-  - [ ] DbContext health check added
-  - [ ] XML documentation comments on all endpoints
-  - [ ] All endpoints documented with examples
-  - [ ] OpenAPI spec includes authentication bearer scheme
-  - [ ] Committed with message "T013: Scalar OpenAPI & health checks"
+  - [x] Scalar.AspNetCore package installed
+  - [x] OpenAPI specification generated from controllers
+  - [x] Scalar UI accessible at /scalar/v1
+  - [x] Health check endpoints configured (/health, /health/ready)
+  - [x] DbContext health check added
+  - [x] XML documentation comments on all endpoints
+  - [x] All endpoints documented with examples
+  - [x] OpenAPI spec includes authentication bearer scheme
+  - [x] Committed with message "T013: Scalar OpenAPI & health checks"
 - **Plan changes**: 
 
 **Implementation Notes**:
