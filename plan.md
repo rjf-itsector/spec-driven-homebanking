@@ -138,6 +138,27 @@ These additional practices apply when tasks are executed by AI agents:
 | Date | Source Task | Change Description |
 |------|-----------|-------------------|
 | 2026-02-17 | — | Added Global Definition of Done section (v1.1.0) |
+| 2026-02-17 | T000 | Added T000 (Environment Bootstrap); marked done. Scaffolded src/api (.NET 9 webapi) and src/web (React+Vite+TS). Added root .gitignore and nuget.config. |
+
+---
+
+## Phase 0: Environment Bootstrap
+
+### Task T000: Project Scaffold and Build Verification
+- **Status**: done
+- **Dependencies**: none
+- **Estimate**: S
+- **DoD**:
+  - [x] Folder structure created (src/api, src/web)
+  - [x] .NET Web API project created in src/api (HomeBanking.API, .NET 9.0)
+  - [x] React+Vite+TypeScript project created in src/web
+  - [x] Root .gitignore covers .NET, Node, editor, and OS artifacts
+  - [x] Root nuget.config restricts package sources to nuget.org
+  - [x] `dotnet build` succeeds with zero errors
+  - [x] `npm run build` succeeds with zero errors
+  - [x] No application code written
+  - [x] Committed with message "T000: project scaffold and build verification"
+- **Plan changes**: Added this task (T000) to plan.md as Phase 0.
 
 ---
 

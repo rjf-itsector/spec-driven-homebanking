@@ -1,0 +1,30 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+.vs/
+
+# Node
+node_modules/
+dist/
+build/
+*.log
+npm-debug.log*
+.env
+.env.local
+
+# Testing
+coverage/
+TestResults/
+playwright-report/
+test-results/
+
+# IDE / Editor
+.obsidian/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
