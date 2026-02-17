@@ -831,18 +831,18 @@ Create `backend/src/HomeBanking.Infrastructure/Data/DataSeeder.cs` with demo dat
 ---
 
 ### Task T008: JWT Authentication Infrastructure
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T007
 - **Estimate**: M
 - **DoD**:
-  - [ ] JWT configuration added to appsettings.json
-  - [ ] JwtService created with GenerateToken method
-  - [ ] JWT authentication middleware configured in Program.cs
-  - [ ] [Authorize] attribute tested on dummy endpoint
-  - [ ] Token expiration set to 2 hours
-  - [ ] Claims include userId and email
-  - [ ] Builds successfully
-  - [ ] Committed with message "T008: JWT authentication infrastructure"
+  - [x] JWT configuration added to appsettings.json
+  - [x] JwtService created with GenerateToken method
+  - [x] JWT authentication middleware configured in Program.cs
+  - [x] [Authorize] attribute tested on dummy endpoint
+  - [x] Token expiration set to 2 hours
+  - [x] Claims include userId and email
+  - [x] Builds successfully
+  - [x] Committed with message "T008: JWT authentication infrastructure"
 - **Plan changes**: 
 
 **Implementation Notes**:
