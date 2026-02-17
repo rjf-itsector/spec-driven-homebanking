@@ -10,4 +10,10 @@
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="9.0.10" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HomeBanking.Core\HomeBanking.Core.csproj" />
+    <ProjectReference Include="..\HomeBanking.Infrastructure\HomeBanking.Infrastructure.csproj" />
+    <ProjectReference Include="..\HomeBanking.Contracts\HomeBanking.Contracts.csproj" />
+  </ItemGroup>
+
 </Project>

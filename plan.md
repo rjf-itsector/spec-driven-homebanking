@@ -140,6 +140,7 @@ These additional practices apply when tasks are executed by AI agents:
 | 2026-02-17 | — | Added Global Definition of Done section (v1.1.0) |
 | 2026-02-17 | T000 | Added T000 (Environment Bootstrap); marked done. Scaffolded src/api (.NET 9 webapi) and src/web (React+Vite+TS). Added root .gitignore and nuget.config. |
 | 2026-02-17 | T001 | Adapted monorepo to existing src/api + src/web structure (instead of backend/ + frontend/). Created HomeBanking.sln at src/api/ so `dotnet build src/api` works. All subsequent tasks will use src/api and src/web paths. Added placeholder test script to src/web/package.json. |
+| 2026-02-17 | T002 | Added inter-project references. Contracts kept dependency-free (no Core ref). Cleaned up WeatherForecast template, added /health endpoint. |
 
 ---
 
@@ -241,17 +242,17 @@ git commit -m "T001: Initialize monorepo structure"
 ---
 
 ### Task T002: Backend .NET Solution Setup
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T001
 - **Estimate**: M
 - **DoD**:
-  - [ ] Solution file created (HomeBanking.sln)
-  - [ ] Four projects created: API, Core, Infrastructure, Contracts
-  - [ ] Project references configured correctly
-  - [ ] All projects target .NET 9.0
-  - [ ] Solution builds successfully (`dotnet build`)
-  - [ ] Committed with message "T002: Backend .NET solution setup"
-- **Plan changes**: 
+  - [x] Solution file created (HomeBanking.sln)
+  - [x] Four projects created: API, Core, Infrastructure, Contracts
+  - [x] Project references configured correctly
+  - [x] All projects target .NET 9.0
+  - [x] Solution builds successfully (`dotnet build`)
+  - [x] Committed with message "T002: Backend .NET solution setup"
+- **Plan changes**: Projects and solution already existed from T000/T001. T002 focused on adding inter-project references (API→Core/Infrastructure/Contracts, Infrastructure→Core, API.Tests→API, Core.Tests→Core). Contracts deliberately kept dependency-free (DTOs don't need Core). Removed WeatherForecast template from Program.cs, replaced with minimal health endpoint.
 
 **Implementation Notes**:
 ```bash
