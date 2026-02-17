@@ -2613,19 +2613,19 @@ Add `data-testid` attributes to components for stable selectors.
 ---
 
 ### Task T027: E2E Test - Transaction List Infinite Scroll
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T020, T026
 - **Estimate**: M
 - **DoD**:
-  - [ ] Playwright test file created: transactions.spec.ts
-  - [ ] Test: Login and navigate to account transactions
-  - [ ] Test: Initial 20 transactions load
-  - [ ] Test: Scroll triggers next batch load
-  - [ ] Test: "No more transactions" appears at end
-  - [ ] Test: Transactions sorted by timestamp (newest first)
-  - [ ] Test: Category badges visible
-  - [ ] All tests pass
-  - [ ] Committed with message "T027: E2E test - transaction list infinite scroll"
+  - [x] Playwright test file created: transactions.spec.ts
+  - [x] Test: Login and navigate to account transactions
+  - [x] Test: Initial 20 transactions load
+  - [x] Test: Scroll triggers next batch load
+  - [x] Test: "No more transactions" appears at end
+  - [x] Test: Transactions sorted by timestamp (newest first)
+  - [x] Test: Category badges visible
+  - [x] All tests pass
+  - [x] Committed with message "T027: E2E test - transaction list infinite scroll"
 - **Plan changes**: 
 
 **Implementation Notes**:
