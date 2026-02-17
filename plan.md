@@ -145,6 +145,7 @@ These additional practices apply when tasks are executed by AI agents:
 | 2026-02-17 | T004 | E2E Playwright project initialized in e2e/ with correct paths to src/api and src/web. |
 | 2026-02-17 | T005 | Created .github/workflows/{backend,frontend,e2e}.yml. Corrected paths to src/api and src/web. All workflows trigger on push+PR with path filters. E2E uploads Playwright report on failure. |
 | 2026-02-17 | T006 | Created User, Account, Transaction entities with enums (AccountType, TransactionType, TransactionCategory) in HomeBanking.Core/Entities. Full XML docs. |
+| 2026-02-17 | T007 | Created HomeBankingDbContext with fluent API config, DataSeeder with 79 transactions across 4 accounts. InMemory DB configured. Program.cs seeds on startup. |
 
 ---
 
@@ -751,20 +752,20 @@ public enum TransactionCategory
 ---
 
 ### Task T007: EF Core DbContext & Demo Data Seeder
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T006
 - **Estimate**: L
 - **DoD**:
-  - [ ] HomeBankingDbContext created with DbSet properties
-  - [ ] Entity configurations created (fluent API)
-  - [ ] InMemory database provider configured
-  - [ ] DataSeeder class created with realistic demo data
-  - [ ] Seed data includes: 1 user, 4 accounts, 60+ transactions
-  - [ ] Balance calculations verified (sum of transactions = balance)
-  - [ ] Program.cs seeds data on startup
-  - [ ] Database accessible from controllers
-  - [ ] Committed with message "T007: EF Core DbContext & demo data seeder"
-- **Plan changes**: 
+  - [x] HomeBankingDbContext created with DbSet properties
+  - [x] Entity configurations created (fluent API)
+  - [x] InMemory database provider configured
+  - [x] DataSeeder class created with realistic demo data
+  - [x] Seed data includes: 1 user, 4 accounts, 60+ transactions (79 total)
+  - [x] Balance calculations verified (sum of transactions = balance via adjustment transactions)
+  - [x] Program.cs seeds data on startup
+  - [x] Database accessible from controllers
+  - [x] Committed with message "T007: EF Core DbContext & demo data seeder"
+- **Plan changes**: EF packages added to Infrastructure. InMemory also added to API .csproj. DataSeeder uses BuildTransactions pattern with adjustment transactions for exact balance reconciliation.
 
 **Implementation Notes**:
 
