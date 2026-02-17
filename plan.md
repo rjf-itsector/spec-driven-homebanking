@@ -2405,21 +2405,22 @@ Write component tests using Testing Library.
 ---
 
 ### Task T024: Loading States & Error Boundaries
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T023
 - **Estimate**: M
+- **Commit**: b057704
 - **DoD**:
-  - [ ] Skeleton loaders created for AccountCard
-  - [ ] Spinner component for transaction list initial load
-  - [ ] ErrorBoundary component catches React errors
-  - [ ] Error fallback UI displays friendly message
-  - [ ] Network error toast notifications
-  - [ ] Loading button states during form submission
-  - [ ] Empty states for no accounts/transactions
-  - [ ] All async operations show loading feedback
-  - [ ] Tested by simulating slow network
-  - [ ] Committed with message "T024: Loading states & error boundaries"
-- **Plan changes**: 
+  - [x] Skeleton loaders created for AccountCard
+  - [x] Spinner component for transaction list initial load
+  - [x] ErrorBoundary component catches React errors
+  - [x] Error fallback UI displays friendly message
+  - [x] Network error toast notifications
+  - [x] Loading button states during form submission
+  - [x] Empty states for no accounts/transactions
+  - [x] All async operations show loading feedback
+  - [x] Tested by simulating slow network
+  - [x] Committed with message "T024: Loading states & error boundaries"
+- **Plan changes**: Skeleton loaders, spinners, empty states, and loading buttons were already implemented in prior tasks (T019-T022). Created ErrorBoundary class component wrapping App routes. Added global mutation error toast via QueryClient defaultOptions. Added 5 ErrorBoundary tests (88 total tests).
 
 **Implementation Notes**:
 
