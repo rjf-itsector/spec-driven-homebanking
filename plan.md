@@ -1672,19 +1672,19 @@ dotnet test --collect:"XPlat Code Coverage"
 ---
 
 ### Task T015: Backend Integration Tests (API Endpoints)
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T014
 - **Estimate**: L
 - **DoD**:
-  - [ ] WebApplicationFactory configured for integration tests
-  - [ ] Test database seeded with known data
-  - [ ] Tests for AuthController (login success/failure)
-  - [ ] Tests for AccountsController (get accounts, authorization)
-  - [ ] Tests for TransactionsController (pagination, cursor logic)
-  - [ ] Tests for TransfersController (successful transfer, validation errors)
-  - [ ] All HTTP status codes verified (200, 201, 400, 401, 404)
-  - [ ] All tests pass
-  - [ ] Committed with message "T015: Backend integration tests (API endpoints)"
+  - [x] WebApplicationFactory configured for integration tests
+  - [x] Test database seeded with known data
+  - [x] Tests for AuthController (login success/failure)
+  - [x] Tests for AccountsController (get accounts, authorization)
+  - [x] Tests for TransactionsController (pagination, cursor logic)
+  - [x] Tests for TransfersController (successful transfer, validation errors)
+  - [x] All HTTP status codes verified (200, 201, 400, 401, 404)
+  - [x] All tests pass
+  - [x] Committed with message "T015: Backend integration tests (API endpoints)"
 - **Plan changes**: 
 
 **Implementation Notes**:
