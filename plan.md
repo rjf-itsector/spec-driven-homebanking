@@ -967,18 +967,18 @@ app.UseAuthorization();
 ---
 
 ### Task T009: Auth Endpoints (Login)
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T008
 - **Estimate**: M
 - **DoD**:
-  - [ ] AuthController created with Login endpoint
-  - [ ] LoginRequest and LoginResponse DTOs created
-  - [ ] Endpoint validates email/password against demo user
-  - [ ] Returns JWT token on success (200)
-  - [ ] Returns 401 for invalid credentials
-  - [ ] FluentValidation configured for LoginRequest
-  - [ ] Endpoint tested manually (Postman/curl)
-  - [ ] Committed with message "T009: Auth endpoints (login)"
+  - [x] AuthController created with Login endpoint
+  - [x] LoginRequest and LoginResponse DTOs created
+  - [x] Endpoint validates email/password against demo user
+  - [x] Returns JWT token on success (200)
+  - [x] Returns 401 for invalid credentials
+  - [x] FluentValidation configured for LoginRequest
+  - [x] Endpoint tested manually (Postman/curl)
+  - [x] Committed with message "T009: Auth endpoints (login)"
 - **Plan changes**: 
 
 **Implementation Notes**:
