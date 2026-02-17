@@ -2806,25 +2806,25 @@ Add CI badge to README:
 ## Phase 7: Documentation
 
 ### Task T030: Comprehensive README & Documentation
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T029
 - **Estimate**: M
 - **DoD**:
-  - [ ] README.md updated with full project overview
-  - [ ] Prerequisites listed (.NET 9, Node 20+)
-  - [ ] Setup instructions (clone, install, run)
-  - [ ] Demo credentials documented
-  - [ ] Architecture diagram included
-  - [ ] Tech stack section with versions
-  - [ ] Testing instructions (unit, integration, E2E)
-  - [ ] CI/CD badges added
-  - [ ] Known limitations documented (InMemory DB, mock auth)
-  - [ ] Future enhancements section
-  - [ ] Contributing guidelines (if applicable)
-  - [ ] License added (if applicable)
-  - [ ] Screenshots or GIF of app (optional but recommended)
-  - [ ] docs/architecture/ folder with ADRs
-  - [ ] Committed with message "T030: Comprehensive README & documentation"
+  - [x] README.md updated with full project overview
+  - [x] Prerequisites listed (.NET 9, Node 20+)
+  - [x] Setup instructions (clone, install, run)
+  - [x] Demo credentials documented
+  - [x] Architecture diagram included
+  - [x] Tech stack section with versions
+  - [x] Testing instructions (unit, integration, E2E)
+  - [x] CI/CD badges added
+  - [x] Known limitations documented (InMemory DB, mock auth)
+  - [x] Future enhancements section
+  - [x] Contributing guidelines (if applicable)
+  - [x] License added (if applicable)
+  - [x] Screenshots or GIF of app (optional but recommended)
+  - [x] docs/architecture/ folder with ADRs
+  - [x] Committed with message "T030: Comprehensive README & documentation"
 - **Plan changes**: 
 
 **Implementation Notes**:
