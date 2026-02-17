@@ -1,5 +1,6 @@
 using System.Text;
 using FluentValidation;
+using FluentValidation.AspNetCore;
 using HomeBanking.Core.Interfaces;
 using HomeBanking.Infrastructure.Data;
 using HomeBanking.Infrastructure.Services;
@@ -15,6 +16,9 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllers();
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
+#pragma warning disable CS0618 // FluentValidation auto-validation is deprecated but still functional
+builder.Services.AddFluentValidationAutoValidation();
+#pragma warning restore CS0618
 builder.Services.AddOpenApi(options =>
 {
     options.AddDocumentTransformer((document, context, cancellationToken) =>
@@ -100,3 +104,6 @@ app.MapGet("/api/v1/protected", () => Results.Ok(new { message = "You are author
     .WithTags("Auth");
 
 app.Run();
+
+// Make Program accessible to test project
+public partial class Program { }
