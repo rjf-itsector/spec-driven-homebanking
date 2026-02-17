@@ -141,6 +141,7 @@ These additional practices apply when tasks are executed by AI agents:
 | 2026-02-17 | T000 | Added T000 (Environment Bootstrap); marked done. Scaffolded src/api (.NET 9 webapi) and src/web (React+Vite+TS). Added root .gitignore and nuget.config. |
 | 2026-02-17 | T001 | Adapted monorepo to existing src/api + src/web structure (instead of backend/ + frontend/). Created HomeBanking.sln at src/api/ so `dotnet build src/api` works. All subsequent tasks will use src/api and src/web paths. Added placeholder test script to src/web/package.json. |
 | 2026-02-17 | T002 | Added inter-project references. Contracts kept dependency-free (no Core ref). Cleaned up WeatherForecast template, added /health endpoint. |
+| 2026-02-17 | T003 | Configured Tailwind v4, shadcn/ui, Vitest, Prettier. All frontend tooling in place. |
 
 ---
 
@@ -299,20 +300,20 @@ dotnet build
 ---
 
 ### Task T003: Frontend React+Vite+TypeScript Setup
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T001
 - **Estimate**: M
 - **DoD**:
-  - [ ] Vite project created with React+TypeScript template
-  - [ ] Tailwind CSS installed and configured
-  - [ ] shadcn/ui initialized (components.json created)
-  - [ ] Basic folder structure created (components/ui, features/, lib/, pages/)
-  - [ ] TypeScript strict mode enabled
-  - [ ] ESLint and Prettier configured
-  - [ ] Dev server runs successfully (`npm run dev`)
-  - [ ] Builds successfully (`npm run build`)
-  - [ ] Committed with message "T003: Frontend React+Vite+TypeScript setup"
-- **Plan changes**: 
+  - [x] Vite project created with React+TypeScript template
+  - [x] Tailwind CSS installed and configured
+  - [x] shadcn/ui initialized (components.json created)
+  - [x] Basic folder structure created (components/ui, features/, lib/, pages/)
+  - [x] TypeScript strict mode enabled
+  - [x] ESLint and Prettier configured
+  - [x] Dev server runs successfully (`npm run dev`)
+  - [x] Builds successfully (`npm run build`)
+  - [x] Committed with message "T003: Frontend React+Vite+TypeScript setup"
+- **Plan changes**: Vite project already existed from T000/T001 (React 19 + Vite 7). Installed Tailwind CSS v4 (not v3 as spec suggests) with @tailwindcss/vite plugin. Set up shadcn/ui with new-york style and Tailwind v4 CSS variables. Added Vitest with jsdom environment and @testing-library. Integrated Prettier into ESLint flat config. Created folder structure under components/ (features, layouts, ui) and lib/ (api, hooks). Replaced stock counter App.tsx with minimal placeholder.
 
 **Implementation Notes**:
 ```bash
