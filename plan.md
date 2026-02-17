@@ -1771,19 +1771,19 @@ public class AuthControllerTests : IClassFixture<TestWebApplicationFactory>
 ## Phase 4: Frontend Core
 
 ### Task T016: API Client with Axios & JWT Interceptor
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T003
 - **Estimate**: M
 - **DoD**:
-  - [ ] Axios client configured in src/lib/api/client.ts
-  - [ ] Base URL set to http://localhost:5000/api/v1
-  - [ ] Request interceptor adds JWT from localStorage
-  - [ ] Response interceptor handles 401 (redirect to login)
-  - [ ] TypeScript types defined for all API responses
-  - [ ] API service files created (auth.ts, accounts.ts, transactions.ts, transfers.ts)
-  - [ ] Error handling wrapper function created
-  - [ ] Builds successfully with no TypeScript errors
-  - [ ] Committed with message "T016: API client with axios & JWT interceptor"
+  - [x] Axios client configured in src/lib/api/client.ts
+  - [x] Base URL set to http://localhost:5000/api/v1
+  - [x] Request interceptor adds JWT from localStorage
+  - [x] Response interceptor handles 401 (redirect to login)
+  - [x] TypeScript types defined for all API responses
+  - [x] API service files created (auth.ts, accounts.ts, transactions.ts, transfers.ts)
+  - [x] Error handling wrapper function created
+  - [x] Builds successfully with no TypeScript errors
+  - [x] Committed with message "T016: API client with axios & JWT interceptor"
 - **Plan changes**: 
 
 **Implementation Notes**:
