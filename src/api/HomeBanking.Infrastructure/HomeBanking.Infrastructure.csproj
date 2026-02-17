@@ -10,4 +10,9 @@
     <ProjectReference Include="..\HomeBanking.Core\HomeBanking.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.*" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="9.0.*" />
+  </ItemGroup>
+
 </Project>
