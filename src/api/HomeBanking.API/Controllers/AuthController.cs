@@ -6,6 +6,9 @@ using HomeBanking.Infrastructure.Data;
 
 namespace HomeBanking.API.Controllers;
 
+/// <summary>
+/// Authentication controller for user login and token management.
+/// </summary>
 [ApiController]
 [Route("api/v1/auth")]
 public class AuthController : ControllerBase
@@ -19,6 +22,20 @@ public class AuthController : ControllerBase
         _jwtService = jwtService;
     }
 
+    /// <summary>
+    /// Authenticates a user and returns a JWT token.
+    /// </summary>
+    /// <param name="request">The login credentials containing email and password.</param>
+    /// <returns>A JWT token and user information on success.</returns>
+    /// <response code="200">Returns the JWT token and user details.</response>
+    /// <response code="401">Invalid email or password.</response>
+    /// <example>
+    /// POST /api/v1/auth/login
+    /// {
+    ///   "email": "demo@bank.com",
+    ///   "password": "Demo123!"
+    /// }
+    /// </example>
     [HttpPost("login")]
     [ProducesResponseType(typeof(LoginResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

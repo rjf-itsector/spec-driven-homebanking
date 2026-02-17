@@ -9,6 +9,9 @@ using System.Security.Claims;
 
 namespace HomeBanking.API.Controllers;
 
+/// <summary>
+/// Controller for creating and viewing fund transfers between accounts.
+/// </summary>
 [ApiController]
 [Route("api/v1/transfers")]
 [Authorize]
@@ -27,9 +30,29 @@ public class TransfersController : ControllerBase
         return Guid.Parse(userIdClaim!);
     }
     
+    /// <summary>
+    /// Creates a new fund transfer between two accounts owned by the authenticated user.
+    /// </summary>
+    /// <param name="request">The transfer details including source account, destination account, and amount.</param>
+    /// <returns>The created transfer details with updated balances.</returns>
+    /// <response code="201">Transfer created successfully.</response>
+    /// <response code="400">Insufficient funds or invalid request.</response>
+    /// <response code="401">User is not authenticated.</response>
+    /// <response code="404">One or both accounts not found.</response>
+    /// <example>
+    /// POST /api/v1/transfers
+    /// {
+    ///   "fromAccountId": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+    ///   "toAccountId": "3fa85f64-5717-4562-b3fc-2c963f66afa7",
+    ///   "amount": 100.00,
+    ///   "description": "Monthly savings"
+    /// }
+    /// </example>
     [HttpPost]
     [ProducesResponseType(typeof(TransferResponse), StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> CreateTransfer([FromBody] TransferRequest request)
     {
         var userId = GetCurrentUserId();
@@ -115,7 +138,18 @@ public class TransfersController : ControllerBase
             ));
     }
     
+    /// <summary>
+    /// Retrieves a specific transfer by its transaction identifier.
+    /// </summary>
+    /// <param name="id">The unique identifier of the transfer transaction.</param>
+    /// <returns>The transfer transaction details.</returns>
+    /// <response code="200">Returns the transfer details.</response>
+    /// <response code="401">User is not authenticated.</response>
+    /// <response code="404">Transfer not found.</response>
     [HttpGet("{id:guid}")]
+    [ProducesResponseType(typeof(TransactionDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetTransfer(Guid id)
     {
         var userId = GetCurrentUserId();

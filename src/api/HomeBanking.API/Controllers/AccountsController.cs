@@ -7,6 +7,9 @@ using System.Security.Claims;
 
 namespace HomeBanking.API.Controllers;
 
+/// <summary>
+/// Controller for managing user bank accounts.
+/// </summary>
 [ApiController]
 [Route("api/v1/accounts")]
 [Authorize]
@@ -25,7 +28,15 @@ public class AccountsController : ControllerBase
         return Guid.Parse(userIdClaim!);
     }
 
+    /// <summary>
+    /// Retrieves all active accounts for the authenticated user.
+    /// </summary>
+    /// <returns>A list of the user's active bank accounts.</returns>
+    /// <response code="200">Returns the list of accounts.</response>
+    /// <response code="401">User is not authenticated.</response>
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public async Task<IActionResult> GetAccounts()
     {
         var userId = GetCurrentUserId();
@@ -46,7 +57,18 @@ public class AccountsController : ControllerBase
         return Ok(new { accounts });
     }
 
+    /// <summary>
+    /// Retrieves a specific account by its unique identifier.
+    /// </summary>
+    /// <param name="id">The unique identifier of the account.</param>
+    /// <returns>The account details including transaction count.</returns>
+    /// <response code="200">Returns the account details.</response>
+    /// <response code="403">User does not own the account.</response>
+    /// <response code="404">Account not found.</response>
     [HttpGet("{id:guid}")]
+    [ProducesResponseType(typeof(AccountDetailDto), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetAccount(Guid id)
     {
         var userId = GetCurrentUserId();
