@@ -2283,23 +2283,23 @@ export const CategoryBadge: React.FC<CategoryBadgeProps> = ({ category }) => {
 ---
 
 ### Task T022: Transfer Form with Validation
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T019, T021
 - **Estimate**: L
 - **DoD**:
-  - [ ] TransferForm component created
-  - [ ] React Hook Form integrated with Zod schema
-  - [ ] From/To account dropdowns populated from user accounts
-  - [ ] Amount input with currency formatting
-  - [ ] Description textarea (max 200 chars)
-  - [ ] Validation: amount > 0, accounts differ, sufficient balance
-  - [ ] Real-time validation feedback
-  - [ ] Submit button disabled during submission
-  - [ ] Success: Show toast, navigate to dashboard
-  - [ ] Error: Display error message
-  - [ ] Form resets after successful transfer
-  - [ ] Tested with valid and invalid inputs
-  - [ ] Committed with message "T022: Transfer form with validation"
+  - [x] TransferForm component created
+  - [x] React Hook Form integrated with Zod schema
+  - [x] From/To account dropdowns populated from user accounts
+  - [x] Amount input with currency formatting
+  - [x] Description textarea (max 200 chars)
+  - [x] Validation: amount > 0, accounts differ, sufficient balance
+  - [x] Real-time validation feedback
+  - [x] Submit button disabled during submission
+  - [x] Success: Show toast, navigate to dashboard
+  - [x] Error: Display error message
+  - [x] Form resets after successful transfer
+  - [x] Tested with valid and invalid inputs
+  - [x] Committed with message "T022: Transfer form with validation"
 - **Plan changes**: 
 
 **Implementation Notes**:
