@@ -2556,18 +2556,18 @@ export const useTransferMutation = () => {
 ## Phase 6: E2E & CI
 
 ### Task T026: E2E Test - Login & Dashboard Load
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T018
 - **Estimate**: S
 - **DoD**:
-  - [ ] Playwright test file created: auth.spec.ts
-  - [ ] Test: Navigate to login page
-  - [ ] Test: Fill credentials and submit
-  - [ ] Test: Verify redirect to dashboard
-  - [ ] Test: Verify account cards visible
-  - [ ] Test: Invalid credentials show error
-  - [ ] Test: Unauthenticated redirect to login
-  - [ ] All tests pass (`npx playwright test`)
+  - [x] Playwright test file created: auth.spec.ts
+  - [x] Test: Navigate to login page
+  - [x] Test: Fill credentials and submit
+  - [x] Test: Verify redirect to dashboard
+  - [x] Test: Verify account cards visible
+  - [x] Test: Invalid credentials show error
+  - [x] Test: Unauthenticated redirect to login
+  - [x] All tests pass (`npx playwright test`)
   - [ ] Committed with message "T026: E2E test - login & dashboard load"
 - **Plan changes**: 
 
