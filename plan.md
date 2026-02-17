@@ -2221,19 +2221,19 @@ export const TransactionList: React.FC<TransactionListProps> = ({ accountId }) =
 ---
 
 ### Task T021: Transaction Category Badges
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T020
 - **Estimate**: S
 - **DoD**:
-  - [ ] CategoryBadge component created
-  - [ ] Badge color and icon mapped to each category
-  - [ ] Icons from lucide-react (ShoppingCart, Utensils, Car, etc.)
-  - [ ] Badge uses shadcn Badge component
-  - [ ] Accessible (aria-label with category name)
-  - [ ] Responsive sizing
-  - [ ] Integrated into TransactionRow
-  - [ ] All 8 categories styled
-  - [ ] Committed with message "T021: Transaction category badges"
+  - [x] CategoryBadge component created
+  - [x] Badge color and icon mapped to each category
+  - [x] Icons from lucide-react (ShoppingCart, Utensils, Car, etc.)
+  - [x] Badge uses shadcn Badge component
+  - [x] Accessible (aria-label with category name)
+  - [x] Responsive sizing
+  - [x] Integrated into TransactionRow
+  - [x] All 8 categories styled
+  - [x] Committed with message "T021: Transaction category badges"
 - **Plan changes**: 
 
 **Implementation Notes**:
