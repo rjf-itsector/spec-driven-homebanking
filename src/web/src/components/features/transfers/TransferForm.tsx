@@ -70,20 +70,61 @@ export function TransferForm() {
 
   const mutation = useMutation({
     mutationFn: createTransfer,
-    onSuccess: () => {
+    onMutate: async (request) => {
+      // Cancel outgoing account queries to avoid overwrite
+      await queryClient.cancelQueries({ queryKey: ['accounts'] })
+
+      // Snapshot previous accounts for rollback
+      const previousAccounts = queryClient.getQueryData<AccountDto[]>([
+        'accounts',
+      ])
+
+      // Optimistically update account balances
+      queryClient.setQueryData<AccountDto[]>(['accounts'], (old) => {
+        if (!old) return old
+        return old.map((account) => {
+          if (account.id === request.fromAccountId) {
+            return { ...account, balance: account.balance - request.amount }
+          }
+          if (account.id === request.toAccountId) {
+            return { ...account, balance: account.balance + request.amount }
+          }
+          return account
+        })
+      })
+
+      // Show immediate success toast
       toast.success('Transfer completed', {
         description: 'Your funds have been transferred successfully.',
       })
+
+      return { previousAccounts }
+    },
+    onSuccess: () => {
       reset()
-      queryClient.invalidateQueries({ queryKey: ['accounts'] })
       navigate('/dashboard')
     },
-    onError: (error: unknown) => {
+    onError: (error: unknown, _variables, context) => {
+      // Rollback optimistic update
+      if (context?.previousAccounts) {
+        queryClient.setQueryData(['accounts'], context.previousAccounts)
+      }
+
       if (error instanceof ApiError) {
         setApiError(error.message)
       } else {
         setApiError('An unexpected error occurred. Please try again.')
       }
+
+      toast.error('Transfer failed', {
+        description:
+          error instanceof ApiError ? error.message : 'Please try again later.',
+      })
+    },
+    onSettled: () => {
+      // Refetch to ensure server consistency
+      queryClient.invalidateQueries({ queryKey: ['accounts'] })
+      queryClient.invalidateQueries({ queryKey: ['transactions'] })
     },
   })
 
