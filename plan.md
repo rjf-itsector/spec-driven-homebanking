@@ -2050,21 +2050,21 @@ Create `frontend/src/components/layouts/DashboardLayout.tsx` with responsive des
 ---
 
 ### Task T019: Account Balance Cards
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: T018
 - **Estimate**: M
 - **DoD**:
-  - [ ] AccountCard component created using shadcn Card
-  - [ ] AccountList component fetches accounts via React Query
-  - [ ] Balance formatted as currency with Intl.NumberFormat
-  - [ ] Account type displayed with icon
-  - [ ] Last 4 digits of account number shown (****1234)
-  - [ ] Negative balances styled red (credit cards)
-  - [ ] Loading state shows skeleton cards
-  - [ ] Error state displays error message
-  - [ ] Mobile-responsive grid layout
-  - [ ] Tested with demo data
-  - [ ] Committed with message "T019: Account balance cards"
+  - [x] AccountCard component created using shadcn Card
+  - [x] AccountList component fetches accounts via React Query
+  - [x] Balance formatted as currency with Intl.NumberFormat
+  - [x] Account type displayed with icon
+  - [x] Last 4 digits of account number shown (****1234)
+  - [x] Negative balances styled red (credit cards)
+  - [x] Loading state shows skeleton cards
+  - [x] Error state displays error message
+  - [x] Mobile-responsive grid layout
+  - [x] Tested with demo data
+  - [x] Committed with message "T019: Account balance cards"
 - **Plan changes**: 
 
 **Implementation Notes**:
