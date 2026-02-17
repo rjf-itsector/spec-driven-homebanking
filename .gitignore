@@ -4,6 +4,8 @@ obj/
 *.user
 *.suo
 *.cache
+*.dll
+*.exe
 .vs/
 
 # Node
@@ -14,6 +16,7 @@ build/
 npm-debug.log*
 .env
 .env.local
+.env.*
 
 # Testing
 coverage/
@@ -28,3 +31,6 @@ test-results/
 # OS
 .DS_Store
 Thumbs.db
+
+# Exception — keep .gitkeep files so empty dirs are committed
+!.gitkeep

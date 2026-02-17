@@ -139,6 +139,7 @@ These additional practices apply when tasks are executed by AI agents:
 |------|-----------|-------------------|
 | 2026-02-17 | — | Added Global Definition of Done section (v1.1.0) |
 | 2026-02-17 | T000 | Added T000 (Environment Bootstrap); marked done. Scaffolded src/api (.NET 9 webapi) and src/web (React+Vite+TS). Added root .gitignore and nuget.config. |
+| 2026-02-17 | T001 | Adapted monorepo to existing src/api + src/web structure (instead of backend/ + frontend/). Created HomeBanking.sln at src/api/ so `dotnet build src/api` works. All subsequent tasks will use src/api and src/web paths. Added placeholder test script to src/web/package.json. |
 
 ---
 
@@ -177,16 +178,19 @@ This plan breaks down the implementation into **30 atomic tasks**, each independ
 ## Phase 1: Foundation
 
 ### Task T001: Initialize Monorepo Structure
-- **Status**: pending
+- **Status**: done
 - **Dependencies**: none
 - **Estimate**: S
 - **DoD**:
-  - [ ] Root folder structure created (backend/, frontend/, e2e/, docs/)
-  - [ ] Git repository initialized with .gitignore
-  - [ ] .gitignore includes node_modules/, bin/, obj/, .env, coverage/
-  - [ ] Root README.md created with project overview
-  - [ ] Committed to Git with message "T001: Initialize monorepo structure"
-- **Plan changes**: 
+  - [x] Root folder structure created (src/api, src/web existing; e2e/, docs/ created)
+  - [x] Git repository initialized with .gitignore
+  - [x] .gitignore includes node_modules/, bin/, obj/, .env, coverage/
+  - [x] Root README.md created with project overview
+  - [x] HomeBanking.sln created at src/api/ for solution-level build/test
+  - [x] scripts/validate.sh created as single source of truth for quality gates
+  - [x] All validation commands pass (dotnet build/test src/api, npm lint/test src/web)
+  - [x] Committed to Git with message "T001: Initialize monorepo structure"
+- **Plan changes**: Adapted from backend/frontend to src/api/src/web structure. Created .sln early (originally T002 scope) so `dotnet build src/api` works. Added placeholder test script to package.json.
 
 **Implementation Notes**:
 ```bash
