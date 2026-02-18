@@ -16,6 +16,45 @@ A modern, full-stack home banking application built with a **spec-driven develop
 - **Error Handling** — Error boundaries, global mutation error toasts, and API error mapping
 - **Comprehensive Testing** — Unit, integration, and E2E tests (Vitest + Playwright)
 - **CI/CD Pipeline** — Automated testing with GitHub Actions
+- **AI Banking Agent** — Conversational assistant powered by Azure AI Foundry (GPT-4o)
+
+## AI Banking Agent
+
+The application includes an AI-powered banking assistant that provides conversational access to account information, transaction search, spending insights, and transfer operations.
+
+### Agent Capabilities
+
+- **Account Inquiries**: "What's my checking account balance?" / "Show me all my accounts"
+- **Transaction Search**: "Find my transactions from Whole Foods" / "Show me all transactions over $100"
+- **Spending Insights**: "Break down my spending by category" / "What's my biggest spending category?"
+- **Anomaly Detection**: "Any unusual transactions recently?"
+- **Transfer Assistance**: "Transfer $100 from checking to savings" (requires confirmation)
+
+### Configuration
+
+The agent requires an Azure AI Foundry project with a GPT-4o (or compatible) model deployment.
+
+1. Create an Azure AI Foundry project at [ai.azure.com](https://ai.azure.com)
+2. Deploy a GPT-4o or GPT-4o-mini model
+3. Configure the connection in `src/api/HomeBanking.API/appsettings.json`:
+
+```json
+{
+  "AzureAI": {
+    "ProjectEndpoint": "https://your-project.services.ai.azure.com",
+    "ModelDeploymentName": "gpt-4o"
+  }
+}
+```
+
+### Running Without Azure AI
+
+The application works fully without Azure AI configured — the agent chat endpoint will return 503, and the chat widget will display "Agent temporarily unavailable." All other features (accounts, transactions, transfers) work normally.
+
+### Health Checks
+
+- `GET /health` — Overall application health (Healthy even if agent is Degraded)
+- `GET /health/agent` — Agent subsystem health (Healthy/Degraded with details)
 
 ## Tech Stack
 
@@ -111,7 +150,9 @@ src/
 └── pages/              → Route-level page components
 ```
 
-See [docs/architecture/ADR-001-mock-jwt-auth.md](docs/architecture/ADR-001-mock-jwt-auth.md) for architectural decisions.
+See [docs/architecture/](docs/architecture/) for architectural decisions:
+- [ADR-001: Mock JWT Auth](docs/architecture/ADR-001-mock-jwt-auth.md)
+- [ADR-002: AI Agent Architecture](docs/architecture/ADR-002-ai-agent-architecture.md)
 
 ## Testing
 
@@ -175,5 +216,8 @@ npx playwright test             # requires backend + frontend running
 ## Documentation
 
 - [Application Specification](spec.md)
+- [Agent Specification](spec-agent.md)
 - [Implementation Plan](plan.md)
+- [Agent Implementation Plan](plan-agent.md)
 - [Architecture Decisions](docs/architecture/)
+- [Agent Chat API](docs/api/agent-chat.md)

@@ -82,3 +82,44 @@ export interface ApiErrorResponse {
   errors?: Record<string, string[]>
   status?: number
 }
+
+// Agent chat types
+export interface AgentChatRequest {
+  message: string
+  conversationHistory?: ConversationHistoryMessage[]
+}
+
+export interface ConversationHistoryMessage {
+  role: 'user' | 'assistant'
+  content: string
+}
+
+export interface AgentChatResponse {
+  response: string
+  toolsUsed: string[]
+  tokenUsage: { input: number; output: number }
+}
+
+export interface ChatMessage {
+  id: string
+  role: 'user' | 'assistant'
+  content: string
+  timestamp: Date
+  toolsUsed?: string[]
+}
+
+// Spending analytics types
+export interface CategorySpendingDto {
+  category: string
+  total: number
+  transactionCount: number
+  percentage: number
+}
+
+export interface SpendingSummaryDto {
+  fromDate: string
+  toDate: string
+  totalSpending: number
+  categories: CategorySpendingDto[]
+  averageDaily: number
+}

@@ -1,5 +1,6 @@
 import { NavLink, Outlet } from 'react-router-dom'
 import { useAuth } from '@/lib/hooks/useAuth'
+import { ChatWidget } from '@/components/features/agent/ChatWidget'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Sheet, SheetContent, SheetClose } from '@/components/ui/sheet'
@@ -165,6 +166,9 @@ export function DashboardLayout() {
           </main>
         </div>
       </div>
+
+      {/* AI Chat Widget */}
+      <ChatWidget />
     </div>
   )
 }

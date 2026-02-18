@@ -11,11 +11,11 @@
 
 Before starting, ensure these are in place:
 
-- [ ] Azure AI Foundry project exists with a model deployment (GPT-4o or GPT-4o-mini)
-- [ ] Foundry project endpoint and deployment name available
-- [ ] Existing homebanking app is fully functional (all 30 tasks from plan.md completed)
-- [ ] .NET 9 SDK installed, `dotnet build src/api` succeeds
-- [ ] Node.js 20+ installed, `npm run build` in src/web succeeds
+- [x] Azure AI Foundry project exists with a model deployment (GPT-4o or GPT-4o-mini)
+- [x] Foundry project endpoint and deployment name available
+- [x] Existing homebanking app is fully functional (all 30 tasks from plan.md completed)
+- [x] .NET 9 SDK installed, `dotnet build src/api` succeeds
+- [x] Node.js 20+ installed, `npm run build` in src/web succeeds
 
 ---
 
@@ -23,12 +23,12 @@ Before starting, ensure these are in place:
 
 > Inherits from the Global DoD in [plan.md](plan.md) with these additions:
 
-- [ ] Agent-specific code compiles with zero warnings
-- [ ] Agent tools have unit tests with ≥80% coverage
-- [ ] Agent endpoint returns proper errors when Azure AI Foundry is unavailable
-- [ ] Chat widget renders correctly on mobile (320px) and desktop (1280px)
-- [ ] No PII in application logs from agent interactions
-- [ ] `scripts/validate.sh` passes (existing gates still green)
+- [x] Agent-specific code compiles with zero warnings
+- [x] Agent tools have unit tests with ≥80% coverage
+- [x] Agent endpoint returns proper errors when Azure AI Foundry is unavailable
+- [x] Chat widget renders correctly on mobile (320px) and desktop (1280px)
+- [x] No PII in application logs from agent interactions
+- [x] `scripts/validate.sh` passes (existing gates still green)
 
 ---
 
@@ -40,13 +40,13 @@ Before starting, ensure these are in place:
 - **Estimate**: S (2-4h)
 - **Description**: Install Microsoft Agent Framework NuGet packages and configure Azure AI Foundry connection settings.
 - **DoD**:
-  - [ ] NuGet packages added to HomeBanking.API.csproj:
+  - [x] NuGet packages added to HomeBanking.API.csproj:
     - `Microsoft.Agents.AI.AzureAI --prerelease`
     - `Microsoft.Agents.AI.OpenAI --prerelease`
     - `Microsoft.Agents.AI.Workflows --prerelease`
     - `Azure.AI.Projects` (latest stable)
     - `Azure.Identity` (latest stable)
-  - [ ] `appsettings.json` updated with `AzureAI` configuration section:
+  - [x] `appsettings.json` updated with `AzureAI` configuration section:
     ```json
     {
       "AzureAI": {
@@ -55,10 +55,10 @@ Before starting, ensure these are in place:
       }
     }
     ```
-  - [ ] `appsettings.Development.json` populated with placeholder values (or real values if available)
-  - [ ] `.env.example` created documenting required environment variables
-  - [ ] Solution builds with zero warnings
-  - [ ] Existing tests still pass
+  - [x] `appsettings.Development.json` populated with placeholder values (or real values if available)
+  - [x] `.env.example` created documenting required environment variables
+  - [x] Solution builds with zero warnings
+  - [x] Existing tests still pass
 - **Plan changes**: —
 
 ---
@@ -69,20 +69,20 @@ Before starting, ensure these are in place:
 - **Estimate**: M (4-8h)
 - **Description**: Create C# tool functions that the agent model will invoke via function calling. These operate directly on HomeBankingDbContext.
 - **DoD**:
-  - [ ] New folder: `HomeBanking.Core/Services/AgentTools/`
-  - [ ] `IAgentToolService` interface in `HomeBanking.Core/Interfaces/`
-  - [ ] `AgentToolService` implementation with methods:
+  - [x] New folder: `HomeBanking.Core/Services/AgentTools/`
+  - [x] `IAgentToolService` interface in `HomeBanking.Core/Interfaces/`
+  - [x] `AgentToolService` implementation with methods:
     - `GetAccountBalancesAsync(Guid userId)` — returns all account balances
     - `GetAccountDetailsAsync(Guid userId, string accountType)` — returns single account details with transaction count
     - `SearchTransactionsAsync(Guid userId, TransactionSearchParams)` — search with filters (description, category, amount range, dates, limit)
     - `GetSpendingSummaryAsync(Guid userId, SpendingSummaryParams)` — category aggregation for date range
     - `DetectUnusualTransactionsAsync(Guid userId, decimal threshold)` — finds transactions > threshold × category average
     - `ExecuteTransferAsync(Guid userId, TransferParams)` — creates transfer (reuses existing transfer logic)
-  - [ ] `TransactionSearchParams`, `SpendingSummaryParams`, `TransferParams` DTOs created in `HomeBanking.Contracts/Requests/`
-  - [ ] Tool response DTOs created in `HomeBanking.Contracts/Responses/`
-  - [ ] Service registered in DI container (`Program.cs`)
-  - [ ] XML doc comments on all public types and methods
-  - [ ] Solution builds with zero warnings
+  - [x] `TransactionSearchParams`, `SpendingSummaryParams`, `TransferParams` DTOs created in `HomeBanking.Contracts/Requests/`
+  - [x] Tool response DTOs created in `HomeBanking.Contracts/Responses/`
+  - [x] Service registered in DI container (`Program.cs`)
+  - [x] XML doc comments on all public types and methods
+  - [x] Solution builds with zero warnings
 - **Plan changes**: —
 
 ---
@@ -93,10 +93,10 @@ Before starting, ensure these are in place:
 - **Estimate**: M (4-8h)
 - **Description**: Comprehensive unit tests for all agent tool functions.
 - **DoD**:
-  - [ ] New test file: `HomeBanking.Core.Tests/AgentToolServiceTests.cs`
-  - [ ] Tests for `GetAccountBalances`: returns all active accounts, correct balances, empty when no accounts
-  - [ ] Tests for `GetAccountDetails`: correct account found by type, returns 404-equivalent for missing type
-  - [ ] Tests for `SearchTransactions`:
+  - [x] New test file: `HomeBanking.Core.Tests/AgentToolServiceTests.cs`
+  - [x] Tests for `GetAccountBalances`: returns all active accounts, correct balances, empty when no accounts
+  - [x] Tests for `GetAccountDetails`: correct account found by type, returns 404-equivalent for missing type
+  - [x] Tests for `SearchTransactions`:
     - Filter by description (case-insensitive)
     - Filter by category
     - Filter by amount range (min/max)
@@ -104,24 +104,24 @@ Before starting, ensure these are in place:
     - Combined filters
     - Limit enforcement (default 10, max 20)
     - Empty results
-  - [ ] Tests for `GetSpendingSummary`:
+  - [x] Tests for `GetSpendingSummary`:
     - Correct category totals and counts
     - Percentage calculations
     - Default date range (30 days)
     - Custom date range
     - Average daily spending calculation
-  - [ ] Tests for `DetectUnusualTransactions`:
+  - [x] Tests for `DetectUnusualTransactions`:
     - Identifies transactions > 2x category average
     - Custom threshold
     - No unusual transactions returns empty list
     - Single transaction in category (not flagged)
-  - [ ] Tests for `ExecuteTransfer`:
+  - [x] Tests for `ExecuteTransfer`:
     - Successful transfer updates both balances
     - Insufficient funds error
     - Same-account error
     - Account not found error
     - Amount validation (> 0, ≤ 1,000,000)
-  - [ ] All tests pass, ≥80% coverage on AgentToolService
+  - [x] All tests pass, ≥80% coverage on AgentToolService
 - **Plan changes**: —
 
 ---
@@ -132,9 +132,9 @@ Before starting, ensure these are in place:
 - **Estimate**: M (4-8h)
 - **Description**: Create the agent orchestration service that manages the system prompt, tool registration, and conversation flow using Microsoft Agent Framework.
 - **DoD**:
-  - [ ] New file: `HomeBanking.Infrastructure/Services/BankingAgentService.cs`
-  - [ ] `IBankingAgentService` interface in `HomeBanking.Core/Interfaces/`
-  - [ ] Service responsibilities:
+  - [x] New file: `HomeBanking.Infrastructure/Services/BankingAgentService.cs`
+  - [x] `IBankingAgentService` interface in `HomeBanking.Core/Interfaces/`
+  - [x] Service responsibilities:
     - Initialize Azure AI Foundry client with configured endpoint and deployment
     - Register all 6 agent tools with their JSON schemas
     - Manage system prompt (hardcoded server-side, per spec-agent.md)
@@ -142,12 +142,12 @@ Before starting, ensure these are in place:
     - Execute agent turn: send to model → process tool calls → return response
     - Handle multi-step tool calling (model may call multiple tools per turn)
     - Truncate conversation history to 20 messages max
-  - [ ] Returns `AgentChatResponse` DTO with: response text, tools used list, token usage
-  - [ ] Handles Azure AI Foundry errors gracefully (timeout, unavailable) → throws typed exception
-  - [ ] Registered as scoped service in DI container
-  - [ ] Structured logging: tool calls, response time, token counts (no PII)
-  - [ ] XML doc comments
-  - [ ] Solution builds with zero warnings
+  - [x] Returns `AgentChatResponse` DTO with: response text, tools used list, token usage
+  - [x] Handles Azure AI Foundry errors gracefully (timeout, unavailable) → throws typed exception
+  - [x] Registered as scoped service in DI container
+  - [x] Structured logging: tool calls, response time, token counts (no PII)
+  - [x] XML doc comments
+  - [x] Solution builds with zero warnings
 - **Plan changes**: —
 
 ---
@@ -158,22 +158,22 @@ Before starting, ensure these are in place:
 - **Estimate**: S (2-4h)
 - **Description**: Create the REST endpoint for agent chat interactions.
 - **DoD**:
-  - [ ] New file: `HomeBanking.API/Controllers/AgentController.cs`
-  - [ ] Endpoint: `POST /api/v1/agent/chat`
-  - [ ] Decorated with `[Authorize]` (reuses existing JWT auth)
-  - [ ] Request validation:
+  - [x] New file: `HomeBanking.API/Controllers/AgentController.cs`
+  - [x] Endpoint: `POST /api/v1/agent/chat`
+  - [x] Decorated with `[Authorize]` (reuses existing JWT auth)
+  - [x] Request validation:
     - `message` required, 1-500 characters
     - `conversationHistory` optional, max 20 items
     - Each history entry: `role` (user/assistant) + `content` (max 2000 chars)
-  - [ ] Extracts userId from JWT claims (same pattern as other controllers)
-  - [ ] Calls `IBankingAgentService.ChatAsync(userId, message, history)`
-  - [ ] Returns 200 with `AgentChatResponse`
-  - [ ] Returns 400 for validation errors
-  - [ ] Returns 429 for rate limiting (10 req/min per user)
-  - [ ] Returns 503 when Azure AI Foundry is unreachable
-  - [ ] Request/response DTOs in `HomeBanking.Contracts/`
-  - [ ] XML doc comments, OpenAPI annotations
-  - [ ] Solution builds with zero warnings
+  - [x] Extracts userId from JWT claims (same pattern as other controllers)
+  - [x] Calls `IBankingAgentService.ChatAsync(userId, message, history)`
+  - [x] Returns 200 with `AgentChatResponse`
+  - [x] Returns 400 for validation errors
+  - [x] Returns 429 for rate limiting (10 req/min per user)
+  - [x] Returns 503 when Azure AI Foundry is unreachable
+  - [x] Request/response DTOs in `HomeBanking.Contracts/`
+  - [x] XML doc comments, OpenAPI annotations
+  - [x] Solution builds with zero warnings
 - **Plan changes**: —
 
 ---
@@ -184,8 +184,8 @@ Before starting, ensure these are in place:
 - **Estimate**: M (4-8h)
 - **Description**: Integration tests for the agent endpoint using TestWebApplicationFactory.
 - **DoD**:
-  - [ ] New file: `HomeBanking.API.Tests/AgentControllerIntegrationTests.cs`
-  - [ ] Tests (with mocked Azure AI Foundry client):
+  - [x] New file: `HomeBanking.API.Tests/AgentControllerIntegrationTests.cs`
+  - [x] Tests (with mocked Azure AI Foundry client):
     - `POST /api/v1/agent/chat` returns 401 without JWT
     - `POST /api/v1/agent/chat` returns 400 for empty message
     - `POST /api/v1/agent/chat` returns 400 for message > 500 chars
@@ -193,9 +193,9 @@ Before starting, ensure these are in place:
     - `POST /api/v1/agent/chat` returns 200 with valid request (mocked model response)
     - `POST /api/v1/agent/chat` returns 503 when model client throws
     - Rate limiting returns 429 after 10 requests
-  - [ ] Agent model/Foundry client mocked at the DI level in TestWebApplicationFactory
-  - [ ] All existing tests still pass
-  - [ ] All new tests pass
+  - [x] Agent model/Foundry client mocked at the DI level in TestWebApplicationFactory
+  - [x] All existing tests still pass
+  - [x] All new tests pass
 - **Plan changes**: —
 
 ---
@@ -208,23 +208,23 @@ Before starting, ensure these are in place:
 - **Estimate**: M (4-8h)
 - **Description**: Build the React chat widget UI components.
 - **DoD**:
-  - [ ] New folder: `src/web/src/components/features/agent/`
-  - [ ] Components created:
+  - [x] New folder: `src/web/src/components/features/agent/`
+  - [x] Components created:
     - `ChatWidget.tsx` — floating button + panel container, open/close state
     - `ChatPanel.tsx` — panel layout (header, message area, input)
     - `ChatMessageList.tsx` — scrollable message list, auto-scroll to bottom
     - `ChatMessage.tsx` — message bubble, user (right-aligned, blue) vs assistant (left-aligned, gray)
     - `ChatInput.tsx` — text input + send button, Enter to send, disabled while loading
     - `ChatThinking.tsx` — animated dots indicator while agent is processing
-  - [ ] Markdown rendering in agent messages (react-markdown + remark-gfm)
-  - [ ] `npm install react-markdown remark-gfm` (new dependencies)
-  - [ ] Responsive: 400px panel on desktop, full-width on mobile
-  - [ ] Accessible: ARIA labels, keyboard navigation, focus management
-  - [ ] Uses shadcn/ui primitives (Button, Card, ScrollArea, Input)
-  - [ ] Tailwind styling consistent with existing app theme
-  - [ ] TSDoc on exported components
-  - [ ] Frontend builds with zero warnings
-  - [ ] Frontend lint passes
+  - [x] Markdown rendering in agent messages (react-markdown + remark-gfm)
+  - [x] `npm install react-markdown remark-gfm` (new dependencies)
+  - [x] Responsive: 400px panel on desktop, full-width on mobile
+  - [x] Accessible: ARIA labels, keyboard navigation, focus management
+  - [x] Uses shadcn/ui primitives (Button, Card, ScrollArea, Input)
+  - [x] Tailwind styling consistent with existing app theme
+  - [x] TSDoc on exported components
+  - [x] Frontend builds with zero warnings
+  - [x] Frontend lint passes
 - **Plan changes**: —
 
 ---
@@ -235,25 +235,25 @@ Before starting, ensure these are in place:
 - **Estimate**: S (2-4h)
 - **Description**: Create the React hook for agent state management and API communication.
 - **DoD**:
-  - [ ] New file: `src/web/src/lib/hooks/useChatAgent.ts`
-  - [ ] New file: `src/web/src/lib/api/agent.ts` (API client function)
-  - [ ] Hook manages:
+  - [x] New file: `src/web/src/lib/hooks/useChatAgent.ts`
+  - [x] New file: `src/web/src/lib/api/agent.ts` (API client function)
+  - [x] Hook manages:
     - `messages: ChatMessage[]` — accumulated conversation
     - `isOpen: boolean` — widget open/close state
     - `isLoading: boolean` — request in flight
     - `error: string | null` — last error message
-  - [ ] `sendMessage(text: string)` function:
+  - [x] `sendMessage(text: string)` function:
     - Appends user message to state
     - Calls `POST /api/v1/agent/chat` with message + conversation history
     - Appends assistant response to state
     - Handles errors (network, 429, 503) with user-friendly messages
-  - [ ] `clearChat()` function — resets messages
-  - [ ] `toggleOpen()` function — open/close panel
-  - [ ] Conversation history limited to last 20 messages in API payload
-  - [ ] API client uses existing axios instance (from `src/web/src/lib/api/client.ts`)
-  - [ ] TypeScript types for request/response DTOs
-  - [ ] TSDoc comments
-  - [ ] Frontend builds with zero warnings
+  - [x] `clearChat()` function — resets messages
+  - [x] `toggleOpen()` function — open/close panel
+  - [x] Conversation history limited to last 20 messages in API payload
+  - [x] API client uses existing axios instance (from `src/web/src/lib/api/client.ts`)
+  - [x] TypeScript types for request/response DTOs
+  - [x] TSDoc comments
+  - [x] Frontend builds with zero warnings
 - **Plan changes**: —
 
 ---
@@ -264,14 +264,14 @@ Before starting, ensure these are in place:
 - **Estimate**: S (2-4h)
 - **Description**: Mount the ChatWidget in the authenticated app layout so it appears on all protected pages.
 - **DoD**:
-  - [ ] ChatWidget rendered inside the authenticated layout (DashboardLayout or equivalent)
-  - [ ] Widget only visible when user is authenticated
-  - [ ] Widget does NOT appear on the login page
-  - [ ] Chat state resets on logout
-  - [ ] Widget does not interfere with existing UI (proper z-index, no layout shift)
-  - [ ] Tested on mobile (320px), tablet (768px), desktop (1280px) viewports
-  - [ ] Frontend builds with zero warnings
-  - [ ] Existing frontend tests still pass
+  - [x] ChatWidget rendered inside the authenticated layout (DashboardLayout or equivalent)
+  - [x] Widget only visible when user is authenticated
+  - [x] Widget does NOT appear on the login page
+  - [x] Chat state resets on logout
+  - [x] Widget does not interfere with existing UI (proper z-index, no layout shift)
+  - [x] Tested on mobile (320px), tablet (768px), desktop (1280px) viewports
+  - [x] Frontend builds with zero warnings
+  - [x] Existing frontend tests still pass
 - **Plan changes**: —
 
 ---
@@ -282,17 +282,17 @@ Before starting, ensure these are in place:
 - **Estimate**: M (4-8h)
 - **Description**: Unit tests for all agent-related React components and hooks.
 - **DoD**:
-  - [ ] New folder: `src/web/src/components/features/agent/__tests__/`
-  - [ ] Test files:
+  - [x] New folder: `src/web/src/components/features/agent/__tests__/`
+  - [x] Test files:
     - `ChatWidget.test.tsx` — renders button, opens/closes panel on click
     - `ChatMessage.test.tsx` — renders user vs assistant styling, renders markdown
     - `ChatInput.test.tsx` — character limit (500), empty message prevented, send on Enter, disabled when loading
     - `ChatThinking.test.tsx` — renders indicator
     - `useChatAgent.test.ts` — sendMessage appends messages, loading state, error state, clearChat resets, history limit
-  - [ ] Mocked API calls (MSW or vi.mock)
-  - [ ] All tests pass
-  - [ ] Coverage ≥ 80% on agent components
-  - [ ] Existing frontend tests still pass
+  - [x] Mocked API calls (MSW or vi.mock)
+  - [x] All tests pass
+  - [x] Coverage ≥ 80% on agent components
+  - [x] Existing frontend tests still pass
 - **Plan changes**: —
 
 ---
@@ -305,16 +305,16 @@ Before starting, ensure these are in place:
 - **Estimate**: M (4-8h)
 - **Description**: Playwright E2E tests for the agent chat flow.
 - **DoD**:
-  - [ ] New file: `e2e/tests/agent.spec.ts`
-  - [ ] Tests:
+  - [x] New file: `e2e/tests/agent.spec.ts`
+  - [x] Tests:
     - Chat widget button visible on dashboard after login
     - Chat widget NOT visible on login page
     - Open chat → send message → response appears (requires running agent backend with mocked model or real Foundry)
     - Send "What's my checking balance?" → response contains account balance
     - Close and reopen chat → messages preserved (within session)
     - Mobile viewport → chat panel is full-width
-  - [ ] E2E test configuration handles agent endpoint availability
-  - [ ] All existing E2E tests still pass
+  - [x] E2E test configuration handles agent endpoint availability
+  - [x] All existing E2E tests still pass
 - **Plan changes**: —
 
 ---
@@ -325,13 +325,13 @@ Before starting, ensure these are in place:
 - **Estimate**: S (2-4h)
 - **Description**: Add agent-specific health checks and ensure graceful degradation.
 - **DoD**:
-  - [ ] Health check for Azure AI Foundry connectivity added to `/health` endpoint
-  - [ ] Agent health reported as a sub-component (degraded, not failing, if Foundry is down)
-  - [ ] Main app health check remains `Healthy` even if agent is `Degraded`
-  - [ ] Chat widget shows "Agent temporarily unavailable" banner when 503 received
-  - [ ] Widget remains interactive (user can retry) when agent is degraded
-  - [ ] Structured logging for agent health transitions
-  - [ ] Unit test for health check behavior
+  - [x] Health check for Azure AI Foundry connectivity added to `/health` endpoint
+  - [x] Agent health reported as a sub-component (degraded, not failing, if Foundry is down)
+  - [x] Main app health check remains `Healthy` even if agent is `Degraded`
+  - [x] Chat widget shows "Agent temporarily unavailable" banner when 503 received
+  - [x] Widget remains interactive (user can retry) when agent is degraded
+  - [x] Structured logging for agent health transitions
+  - [x] Unit test for health check behavior
 - **Plan changes**: —
 
 ---
@@ -342,18 +342,18 @@ Before starting, ensure these are in place:
 - **Estimate**: S (2-4h)
 - **Description**: Update project documentation for the agent feature.
 - **DoD**:
-  - [ ] `README.md` updated with:
+  - [x] `README.md` updated with:
     - Agent feature description
     - Azure AI Foundry configuration instructions
     - Environment variables needed
     - How to run with/without agent
-  - [ ] `docs/architecture/ADR-002-ai-agent-architecture.md` created with:
+  - [x] `docs/architecture/ADR-002-ai-agent-architecture.md` created with:
     - Decision: .NET in-process agent vs. Python microservice
     - Decision: Stateless conversation (client-side history)
     - Decision: Function calling for tool invocation
     - Decision: Explicit transfer confirmation
-  - [ ] API documentation updated with agent chat endpoint
-  - [ ] Inline code comments for non-obvious agent logic
+  - [x] API documentation updated with agent chat endpoint
+  - [x] Inline code comments for non-obvious agent logic
 - **Plan changes**: —
 
 ---

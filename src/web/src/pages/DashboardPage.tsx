@@ -1,4 +1,5 @@
 import { AccountList } from '@/components/features/accounts/AccountList'
+import { SpendingChart } from '@/components/features/spending/SpendingChart'
 
 export function DashboardPage() {
   return (
@@ -10,6 +11,7 @@ export function DashboardPage() {
         </p>
       </div>
       <AccountList />
+      <SpendingChart />
     </div>
   )
 }

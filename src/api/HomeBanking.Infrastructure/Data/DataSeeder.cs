@@ -142,18 +142,20 @@ public static class DataSeeder
             (50,   200.00m,  "Refund - Amazon.com",                   TransactionType.Deposit,    TransactionCategory.Shopping),
             (55,  -500.00m,  "Transfer to Savings",                   TransactionType.Transfer,   TransactionCategory.Other),
             (60, 3_200.00m,  "Salary Deposit - Acme Corp",             TransactionType.Deposit,    TransactionCategory.Other),
+            (62,   150.00m,  "Health Insurance Refund",               TransactionType.Deposit,    TransactionCategory.Healthcare),
             (63,   -52.15m,  "Whole Foods Market #1234",              TransactionType.Payment,    TransactionCategory.Groceries),
+            (65,    45.00m,  "Visa Cashback Reward",                  TransactionType.Deposit,    TransactionCategory.Shopping),
             (66,   -35.00m,  "Internet Service - Comcast",            TransactionType.Payment,    TransactionCategory.Bills),
+            (68,    28.50m,  "Metro Transit Refund",                  TransactionType.Deposit,    TransactionCategory.Transportation),
             (69,  -150.00m,  "Dentist - Dr. Smith",                   TransactionType.Payment,    TransactionCategory.Healthcare),
+            (71,    80.00m,  "Concert Ticket Refund",                 TransactionType.Deposit,    TransactionCategory.Entertainment),
             (72,   -18.90m,  "McDonald's #7890",                      TransactionType.Payment,    TransactionCategory.Dining),
+            (74,    35.00m,  "Grocery Overcharge Refund",             TransactionType.Deposit,    TransactionCategory.Groceries),
             (75,   -40.00m,  "Gym Membership - Planet Fitness",       TransactionType.Payment,    TransactionCategory.Bills),
+            (77,    55.00m,  "Restaurant Gift Card Cashback",         TransactionType.Deposit,    TransactionCategory.Dining),
             (78,   -95.00m,  "Costco Wholesale #123",                 TransactionType.Payment,    TransactionCategory.Groceries),
         };
 
-        // Sum of amounts: 3200 - 45.67 - 12.99 - 55 - 32.50 - 89.99 - 500 - 60 - 28.45 - 15.99 - 42.30
-        //                 + 3200 - 75 - 38.25 - 120 - 22.50 - 65.80 + 200 - 500 + 3200
-        //                 - 52.15 - 35 - 150 - 18.90 - 40 - 95
-        // = 8004.51 ... need adjustment to hit 5250.00
         // Adjustment: 5250.00 - sum(txDefs amounts)
         var rawSum = txDefs.Sum(t => t.Amount);
         var adjustment = 5_250.00m - rawSum;
@@ -172,18 +174,22 @@ public static class DataSeeder
             (3,   5_000.00m, "Initial Deposit",                        TransactionType.Deposit,    TransactionCategory.Other),
             (16,    500.00m, "Transfer from Checking",                 TransactionType.Transfer,   TransactionCategory.Other),
             (20,      8.33m, "Interest Payment",                       TransactionType.Interest,   TransactionCategory.Other),
-            (25,  1_000.00m, "Birthday Gift Deposit",                  TransactionType.Deposit,    TransactionCategory.Other),
+            (25,  1_000.00m, "Birthday Gift Deposit",                  TransactionType.Deposit,    TransactionCategory.Entertainment),
             (30,   -200.00m, "Emergency Fund Withdrawal",              TransactionType.Withdrawal, TransactionCategory.Other),
-            (35,  2_000.00m, "Tax Refund Deposit",                     TransactionType.Deposit,    TransactionCategory.Other),
+            (35,  2_000.00m, "Tax Refund Deposit",                     TransactionType.Deposit,    TransactionCategory.Bills),
             (40,     12.50m, "Interest Payment",                       TransactionType.Interest,   TransactionCategory.Other),
             (45,   -500.00m, "Transfer to Investment",                 TransactionType.Transfer,   TransactionCategory.Other),
             (50,    750.00m, "Bonus Deposit - Acme Corp",              TransactionType.Deposit,    TransactionCategory.Other),
             (55,    500.00m, "Transfer from Checking",                 TransactionType.Transfer,   TransactionCategory.Other),
             (60,     15.75m, "Interest Payment",                       TransactionType.Interest,   TransactionCategory.Other),
             (65, -1_000.00m, "Down Payment Transfer",                  TransactionType.Transfer,   TransactionCategory.Other),
-            (70,  2_500.00m, "Side Project Income",                    TransactionType.Deposit,    TransactionCategory.Other),
-            (75,     18.42m, "Interest Payment",                       TransactionType.Interest,   TransactionCategory.Other),
+            (70,  2_500.00m, "Side Project Income",                    TransactionType.Deposit,    TransactionCategory.Entertainment),
+            (72,    100.00m, "Grocery Coupon Cashback",                TransactionType.Deposit,    TransactionCategory.Groceries),
+            (75,     18.42m, "Interest Payment",                       TransactionType.Interest,   TransactionCategory.Bills),
+            (77,     75.00m, "Medical Reimbursement",                  TransactionType.Deposit,    TransactionCategory.Healthcare),
             (80,  1_500.00m, "Savings Goal Deposit",                   TransactionType.Deposit,    TransactionCategory.Other),
+            (82,     50.00m, "Dining Rewards Cashback",                TransactionType.Deposit,    TransactionCategory.Dining),
+            (84,     60.00m, "Streaming Bundle Refund",                TransactionType.Deposit,    TransactionCategory.Shopping),
             (85,   -300.00m, "Car Repair Fund",                        TransactionType.Withdrawal, TransactionCategory.Other),
         };
 
@@ -219,8 +225,13 @@ public static class DataSeeder
             (54,   750.00m, "Payment - Thank You",                     TransactionType.Deposit,    TransactionCategory.Other),
             (58,  -199.99m, "Apple Store Purchase",                    TransactionType.Payment,    TransactionCategory.Shopping),
             (62,   -29.99m, "HBO Max Subscription",                   TransactionType.Payment,    TransactionCategory.Entertainment),
+            (64,   500.00m, "Payment - Thank You",                     TransactionType.Deposit,    TransactionCategory.Other),
             (67,   -48.50m, "Panera Bread",                            TransactionType.Payment,    TransactionCategory.Dining),
+            (69,    35.50m, "Nordstrom Return Refund",                 TransactionType.Deposit,    TransactionCategory.Shopping),
             (72,  -110.00m, "Nike.com Order",                          TransactionType.Payment,    TransactionCategory.Shopping),
+            (74,    19.99m, "Streaming Subscription Refund",           TransactionType.Deposit,    TransactionCategory.Entertainment),
+            (76,    55.00m, "Restaurant Overcharge Refund",            TransactionType.Deposit,    TransactionCategory.Dining),
+            (79,    42.00m, "Gas Station Refund",                      TransactionType.Deposit,    TransactionCategory.Transportation),
         };
 
         var rawSum = txDefs.Sum(t => t.Amount);
@@ -251,9 +262,13 @@ public static class DataSeeder
             (55,    -29.95m, "Management Fee",                         TransactionType.Fee,        TransactionCategory.Bills),
             (60,    310.00m, "Dividend - SPY",                          TransactionType.Deposit,    TransactionCategory.Other),
             (65,  3_000.00m, "Additional Investment",                   TransactionType.Deposit,    TransactionCategory.Other),
+            (68,     85.00m, "Healthcare ETF Dividend",                 TransactionType.Deposit,    TransactionCategory.Healthcare),
             (70,    198.75m, "Dividend - QQQ",                          TransactionType.Deposit,    TransactionCategory.Other),
+            (73,     45.00m, "Consumer Staples Dividend",               TransactionType.Deposit,    TransactionCategory.Groceries),
             (75, -1_500.00m, "Rebalancing Withdrawal",                 TransactionType.Withdrawal, TransactionCategory.Other),
+            (78,     60.00m, "Utilities Fund Dividend",                 TransactionType.Deposit,    TransactionCategory.Bills),
             (80,  2_000.00m, "Bi-weekly Investment",                    TransactionType.Deposit,    TransactionCategory.Other),
+            (83,     55.00m, "Tech Fund Distribution",                  TransactionType.Deposit,    TransactionCategory.Entertainment),
         };
 
         var rawSum = txDefs.Sum(t => t.Amount);

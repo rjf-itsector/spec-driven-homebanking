@@ -1,0 +1,2 @@
+# Ignore local development settings
+appsettings.Development.json

@@ -2930,10 +2930,83 @@ Create `docs/architecture/ADR-001-mock-jwt-auth.md` documenting key decisions.
 
 ---
 
+## Phase 8: Dashboard Enhancements
+
+### Task T031: Spending Category Pie Chart with Account Filter
+- **Status**: done
+- **Dependencies**: T030
+- **Estimate**: M
+- **DoD**:
+  - [x] Backend: `GET /api/v1/spending/summary` endpoint with optional `accountId` filter
+  - [x] Frontend: `recharts` library installed for pie chart rendering
+  - [x] Donut pie chart showing spending by category (last 30 days)
+  - [x] Account filter dropdown: "All accounts" or specific account
+  - [x] Animated chart entrance (fade-in, zoom-in) and staggered category list
+  - [x] Category breakdown list with progress bars and percentages
+  - [x] Daily average spending displayed
+  - [x] Loading skeleton and error states
+  - [x] Responsive layout (stacked on mobile, side-by-side on desktop)
+  - [x] Consistent category colors matching existing `CategoryBadge` palette
+  - [x] Committed with message "T031: Spending category pie chart with account filter"
+- **Plan changes**: Added Phase 8 for dashboard enhancements
+
+**Implementation Notes**:
+
+Backend:
+- New `SpendingController` at `api/v1/spending/summary`
+- Reuses same spending aggregation logic as `AgentToolService`
+- Accepts optional `accountId`, `fromDate`, `toDate` query params
+- Returns `SpendingSummaryDto` with categories, totals, percentages
+
+Frontend:
+- New `SpendingChart` component in `components/features/spending/`
+- Uses `recharts` `PieChart` with inner radius (donut style)
+- Account filter via Radix Select dropdown, queries re-fetch on change
+- Tailwind `animate-in` classes for entrance animations
+- Staggered animation delays on category rows via inline `animationDelay`
+- Recharts built-in `animationDuration` and `animationEasing` for pie slices
+
+### Task T032: Spending/Savings Direction Toggle
+
+**Status**: `completed`  
+**Priority**: Medium  
+**Estimated Time**: 2 hours  
+**Dependencies**: T031
+
+**Description**: Add a toggle control to the spending chart that allows switching between spending (debits) and savings (credits) data views.
+
+**Definition of Done**:
+- [x] Backend `SpendingController` accepts `direction` query parameter (`spending` | `savings`)
+- [x] Backend filters transactions by amount sign: negative for spending (debits), positive for savings (credits)
+- [x] Frontend `SpendingDirection` type exported from API layer
+- [x] Frontend `SpendingChart` has a pill-style toggle between Spending and Savings
+- [x] Toggle uses `ArrowUpRight` / `ArrowDownLeft` icons for visual clarity
+- [x] Chart animates when switching direction (re-mount via React `key`)
+- [x] Query key includes direction so data is cached per direction
+- [x] Title, description, and empty-state text adapt to selected direction
+- [x] All existing tests pass (133 backend, 118 frontend)
+- [x] TypeScript compiles with no errors
+- **Plan changes**: Added T032 to Phase 8
+
+**Implementation Notes**:
+
+Backend:
+- `SpendingController.GetSpendingSummary` now accepts `direction` param (default: `spending`)
+- Uses `isSavings` bool to toggle between `Amount > 0` (credits) and `Amount < 0` (debits) filtering
+- Same DTO shape returned for both directions
+
+Frontend:
+- `DIRECTION_CONFIG` record maps each direction to label, icon, empty text, total label
+- Pill-style toggle with `bg-muted` container and `bg-background shadow-sm` active state
+- `key={direction}` on chart container forces re-mount → triggers recharts animation on switch
+- React Query caches spending/credits data independently via direction in query key
+
+---
+
 ## Summary
 
-**Total Tasks**: 30  
-**Estimated Time**: ~120-160 hours (3-4 weeks for single developer)
+**Total Tasks**: 32  
+**Estimated Time**: ~127-167 hours (3-4 weeks for single developer)
 
 **Phase Breakdown**:
 - Phase 1 (Foundation): 5 tasks, ~15 hours
@@ -2943,6 +3016,7 @@ Create `docs/architecture/ADR-001-mock-jwt-auth.md` documenting key decisions.
 - Phase 5 (Frontend Quality): 3 tasks, ~15 hours
 - Phase 6 (E2E & CI): 4 tasks, ~16 hours
 - Phase 7 (Documentation): 1 task, ~5 hours
+- Phase 8 (Dashboard Enhancements): 2 tasks, ~7 hours
 
 **Status Tracking**:
 Update task status as: `pending` → `in-progress` → `completed`

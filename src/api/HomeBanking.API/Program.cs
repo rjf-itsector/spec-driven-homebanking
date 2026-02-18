@@ -50,7 +50,10 @@ builder.Services.AddDbContext<HomeBankingDbContext>(options =>
 
 // Health checks
 builder.Services.AddHealthChecks()
-    .AddDbContextCheck<HomeBankingDbContext>();
+    .AddDbContextCheck<HomeBankingDbContext>()
+    .AddCheck<AgentHealthCheck>("agent", 
+        failureStatus: HealthStatus.Degraded,
+        tags: new[] { "agent" });
 
 // CORS
 builder.Services.AddCors(options =>
@@ -65,6 +68,13 @@ builder.Services.AddCors(options =>
 
 // JWT Authentication
 builder.Services.AddScoped<IJwtService, JwtService>();
+builder.Services.AddScoped<IAgentToolService, AgentToolService>();
+builder.Services.AddHttpClient<BankingAgentService>(client =>
+{
+    client.Timeout = TimeSpan.FromSeconds(60);
+});
+builder.Services.AddScoped<IBankingAgentService>(sp =>
+    sp.GetRequiredService<BankingAgentService>());
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -107,6 +117,26 @@ app.MapHealthChecks("/health").AllowAnonymous();
 app.MapHealthChecks("/health/ready", new HealthCheckOptions
 {
     Predicate = check => check.Tags.Contains("ready")
+}).AllowAnonymous();
+app.MapHealthChecks("/health/agent", new HealthCheckOptions
+{
+    Predicate = check => check.Tags.Contains("agent"),
+    ResponseWriter = async (context, report) =>
+    {
+        context.Response.ContentType = "application/json";
+        var result = System.Text.Json.JsonSerializer.Serialize(new
+        {
+            status = report.Status.ToString(),
+            checks = report.Entries.Select(e => new
+            {
+                name = e.Key,
+                status = e.Value.Status.ToString(),
+                description = e.Value.Description,
+                data = e.Value.Data
+            })
+        });
+        await context.Response.WriteAsync(result);
+    }
 }).AllowAnonymous();
 
 // Test protected endpoint
